@@ -9,29 +9,27 @@ import (
 	"strconv"
 )
 
-
 var Db *sql.DB
 
 func ConnectDatabase() {
 	err := godotenv.Load()
 	if err != nil {
-		fmt.Println("Error in occured on .env file")
+		fmt.Println("Error: Database was not successfully loaded")
 	}
 
 	host := os.Getenv("HOST")
-	port, _ := strconv.Atoi(os.Getenv("PORT"))
+	port, _ := strconv.Atoi(os.Getenv("post"))
 	user := os.Getenv("USER")
-	dbname := os.Getenv("DB_NAME")
+	db_name := os.Getenv("DB_NAME")
 	pass := os.Getenv("PASSWORD")
 
-	psqlSetup := fmt.Sprintf("host=%s port=%s user=%s dbname=%s pass=%s sslmode=disable",
-	host, port, user, dbname, pass)
+	psqlSetup := fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=disable",
+	host, port, user, db_name, pass)
 	db, errSql := sql.Open("postgres", psqlSetup)
 	if errSql != nil {
-		fmt.Println("There was an error while connecting to the database", err)
-		panic(err)
+		fmt.Println("There was an error while trying to connect your database")
 	} else {
 		Db = db
-		fmt.Println("Successfully connected to the database!")
+		fmt.Println("Successfully connected to database")
 	}
 }

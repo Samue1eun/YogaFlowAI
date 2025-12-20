@@ -6,7 +6,6 @@ import (
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"os"
-	"strconv"
 )
 
 var Db *sql.DB
@@ -18,7 +17,7 @@ func ConnectDatabase() {
 	}
 
 	host := os.Getenv("HOST")
-	port, _ := strconv.Atoi(os.Getenv("post"))
+	port := os.Getenv("PORT")
 	user := os.Getenv("USER")
 	db_name := os.Getenv("DB_NAME")
 	pass := os.Getenv("PASSWORD")

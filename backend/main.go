@@ -1,9 +1,11 @@
 package main
 
 import (
-	"fmt"
+	"yogaflow.ai/database"
+	"yogaflow.ai/router"
 )
 
 func main() {
-	fmt.Println("Hello world")
+	database.ConnectDatabase()
+	router.PageRouter()
 }

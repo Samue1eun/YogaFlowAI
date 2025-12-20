@@ -3,8 +3,8 @@ package services
 import (
 	"time"
 
-	"yogaflow.ai/models"
 	"yogaflow.ai/database"
+	"yogaflow.ai/models"
 )
 
 func CreateUser(newUser models.User) (models.User, error) {
@@ -12,8 +12,8 @@ func CreateUser(newUser models.User) (models.User, error) {
 	newUser.CreatedAt = now
 	newUser.UpdatedAt = now
 
-	query := `INSERT INTO users (username, email, passwordhash, firstname, lastname, bio, avatarurl, role, isactive)
-				VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING ID`
+query := `INSERT INTO public.users (username, email, passwordhash, firstname, lastname, bio, avatarurl, role, isactive)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id`
 	err := database.Db.QueryRow(
 		query,
 		newUser.Username,

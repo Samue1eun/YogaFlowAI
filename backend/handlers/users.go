@@ -1,38 +1,36 @@
 package handlers
 
 import (
-	"time"
+	"encoding/json"
+	"net/http"
 
-	"yogaflow.ai/models"
 	"yogaflow.ai/database"
+	"yogaflow.ai/models"
 )
 
-func PostUser(newUser models.User) (models.User, error) {
-	now := time.Now()
-	newUser.CreatedAt = now
-	newUser.UpdatedAt = now
+func GetAllUser(w http.ResponseWriter, r *http.Request) {
+	var users []models.User
+	rows, err := database.Db.Query("SELECT id, username, email, firstname, lastname, bio, avatarurl, role, isactive")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	defer rows.Close()
 
-	query := `INSERT INTO users (username, email, passwordhash, firstname, lastname, bio, avatarurl, role, isactive)
-				VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING ID`
-	err := database.Db.QueryRow(
-		query,
-		newUser.Username,
-		newUser.Email,
-		newUser.PasswordHash,
-		newUser.FirstName,
-		newUser.LastName,
-		newUser.Bio,
-		newUser.AvatarURL,
-		newUser.Role,
-		newUser.IsActive,
-	).Scan(&newUser.ID)
-	return newUser, err
+	for rows.Next() {
+		var user models.User
+		err := rows.Scan(&user.ID, &user.Username, &user.Email, &user.PasswordHash, &user.FirstName, &user.LastName, &user.Bio, &user.AvatarURL, &user.Role, &user.IsActive)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		users = append(users, user)
+	}
+	w.Header().Set("content-type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(users)
 }
 
-func UpdateUser() {
-
-}
-
-func DeleteUser() {
+func GetOneUser() {
 
 }

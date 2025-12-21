@@ -19,7 +19,7 @@ func GetAllUser(w http.ResponseWriter, r *http.Request) {
 
 	for rows.Next() {
 		var user models.User
-		err := rows.Scan(&user.ID, &user.Username, &user.Email, &user.PasswordHash, &user.FirstName, &user.LastName, &user.Bio, &user.AvatarURL, &user.Role, &user.IsActive)
+		err := rows.Scan(&user.ID, &user.Username, &user.Email, &user.FirstName, &user.LastName, &user.Bio, &user.AvatarURL, &user.Role, &user.IsActive)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

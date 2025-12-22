@@ -10,7 +10,7 @@ import (
 
 func GetAllUser(w http.ResponseWriter, r *http.Request) {
 	var users []models.User
-	rows, err := database.Db.Query("SELECT id, username, email, firstname, lastname, bio, avatarurl, role, isactive")
+	rows, err := database.Db.Query("SELECT id, username, email, firstname, lastname, bio, avatarurl, role, isactive FROM users")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -29,6 +29,12 @@ func GetAllUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(users)
+}
+
+func GetAllUserAdmin(w http.ResponseWriter, r*http.Request) {
+	var users[[]models.User]
+	rows, err := database.Db.Query("SELECT"
+	)
 }
 
 func GetOneUser() {

@@ -9,7 +9,6 @@ import (
 
 func PageRouter() {
 	mainMux := http.NewServeMux()
-
 	mainMux.HandleFunc("/users", handlers.GetAllUser)
 
 	fmt.Println("Server starting on port :8081")

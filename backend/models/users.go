@@ -16,3 +16,13 @@ type User struct {
 	Role string `json:"role"`
 	IsActive bool `json:"isactive"`
 }
+
+// Role is for admin!
+// Add in what type of user it is (teacher, student)
+// Add in what type of paid user it is (free, premium, teacher)
+
+
+// User favorites
+// Add in favorite yoga poses for user
+// Add in favorite yoga poses for user
+// Add in favorite yoga flows for user

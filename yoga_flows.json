@@ -1,0 +1,242 @@
+{
+  "metadata": {
+    "version": "1.1",
+    "description": "Fundamental yoga poses plus Sun Salutation A & B for Vinyasa-based AI flow generation",
+    "strength_scale": "0-5",
+    "flexibility_scale": "0-5"
+  },
+
+  "sun_salutations": {
+    "sun_a": {
+      "name": "Sun Salutation A",
+      "sequence": [
+        "tadasana",
+        "urdhva_hastasana",
+        "uttanasana",
+        "ardha_uttanasana",
+        "plank",
+        "chaturanga",
+        "upward_dog",
+        "downward_dog",
+        "ardha_uttanasana",
+        "uttanasana",
+        "tadasana"
+      ]
+    },
+    "sun_b": {
+      "name": "Sun Salutation B",
+      "sequence": [
+        "tadasana",
+        "utkatasana",
+        "uttanasana",
+        "ardha_uttanasana",
+        "plank",
+        "chaturanga",
+        "upward_dog",
+        "downward_dog",
+        "virabhadrasana_1",
+        "plank",
+        "chaturanga",
+        "upward_dog",
+        "downward_dog",
+        "virabhadrasana_1",
+        "ardha_uttanasana",
+        "uttanasana",
+        "tadasana"
+      ]
+    }
+  },
+
+  "poses": [
+    {
+      "id": "tadasana",
+      "name": "Mountain Pose",
+      "sanskrit": "Tadasana",
+      "category": "standing_strength",
+      "strength": 2,
+      "flexibility": 1,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "urdhva_hastasana",
+      "name": "Upward Salute",
+      "sanskrit": "Urdhva Hastasana",
+      "category": "standing_strength",
+      "strength": 2,
+      "flexibility": 2,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "uttanasana",
+      "name": "Forward Fold",
+      "sanskrit": "Uttanasana",
+      "category": "hamstrings",
+      "strength": 1,
+      "flexibility": 5,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "ardha_uttanasana",
+      "name": "Halfway Lift",
+      "sanskrit": "Ardha Uttanasana",
+      "category": "hamstrings",
+      "strength": 2,
+      "flexibility": 3,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "utkatasana",
+      "name": "Chair Pose",
+      "sanskrit": "Utkatasana",
+      "category": "standing_strength",
+      "strength": 4,
+      "flexibility": 2,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "plank",
+      "name": "Plank Pose",
+      "sanskrit": "Phalakasana",
+      "category": "upper_body_core",
+      "strength": 5,
+      "flexibility": 1,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "chaturanga",
+      "name": "Chaturanga",
+      "sanskrit": "Chaturanga Dandasana",
+      "category": "upper_body_core",
+      "strength": 5,
+      "flexibility": 2,
+      "difficulty": "intermediate",
+      "is_foundational": true
+    },
+    {
+      "id": "upward_dog",
+      "name": "Upward-Facing Dog",
+      "sanskrit": "Urdhva Mukha Svanasana",
+      "category": "spinal_mobility",
+      "strength": 4,
+      "flexibility": 4,
+      "difficulty": "intermediate",
+      "is_foundational": true
+    },
+    {
+      "id": "downward_dog",
+      "name": "Downward-Facing Dog",
+      "sanskrit": "Adho Mukha Svanasana",
+      "category": "hamstrings",
+      "strength": 3,
+      "flexibility": 4,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "virabhadrasana_1",
+      "name": "Warrior I",
+      "sanskrit": "Virabhadrasana I",
+      "category": "lunges",
+      "strength": 4,
+      "flexibility": 3,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "virabhadrasana_2",
+      "name": "Warrior II",
+      "sanskrit": "Virabhadrasana II",
+      "category": "standing_strength",
+      "strength": 4,
+      "flexibility": 3,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "trikonasana",
+      "name": "Triangle Pose",
+      "sanskrit": "Trikonasana",
+      "category": "standing_strength",
+      "strength": 3,
+      "flexibility": 4,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "anjaneyasana",
+      "name": "Low Lunge",
+      "sanskrit": "Anjaneyasana",
+      "category": "lunges",
+      "strength": 2,
+      "flexibility": 5,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "cobra",
+      "name": "Cobra Pose",
+      "sanskrit": "Bhujangasana",
+      "category": "spinal_mobility",
+      "strength": 3,
+      "flexibility": 4,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "bridge",
+      "name": "Bridge Pose",
+      "sanskrit": "Setu Bandha Sarvangasana",
+      "category": "spinal_mobility",
+      "strength": 4,
+      "flexibility": 4,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "tree",
+      "name": "Tree Pose",
+      "sanskrit": "Vrksasana",
+      "category": "balance",
+      "strength": 3,
+      "flexibility": 2,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "pigeon",
+      "name": "Pigeon Pose",
+      "sanskrit": "Eka Pada Rajakapotasana",
+      "category": "hip_openers",
+      "strength": 1,
+      "flexibility": 5,
+      "difficulty": "intermediate",
+      "is_foundational": true
+    },
+    {
+      "id": "supine_twist",
+      "name": "Supine Twist",
+      "sanskrit": "Supta Matsyendrasana",
+      "category": "recovery",
+      "strength": 1,
+      "flexibility": 3,
+      "difficulty": "beginner",
+      "is_foundational": true
+    },
+    {
+      "id": "savasana",
+      "name": "Corpse Pose",
+      "sanskrit": "Savasana",
+      "category": "recovery",
+      "strength": 0,
+      "flexibility": 0,
+      "difficulty": "beginner",
+      "is_foundational": true
+    }
+  ]
+}

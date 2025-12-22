@@ -31,11 +31,11 @@ func GetAllUser(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(users)
 }
 
-func GetAllUserAdmin(w http.ResponseWriter, r*http.Request) {
-	var users[[]models.User]
-	rows, err := database.Db.Query("SELECT"
-	)
-}
+// func GetAllUserAdmin(w http.ResponseWriter, r*http.Request) {
+// 	var users[[]models.User]
+// 	rows, err := database.Db.Query("SELECT"
+// 	)
+// }
 
 func GetOneUser() {
 

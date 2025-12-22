@@ -55,8 +55,8 @@
       "category": "standing_strength",
       "strength": 2,
       "flexibility": 1,
-      "difficulty": "beginner",
-      "is_foundational": true
+      "difficulty": 1,
+      "level": 1
     },
     {
       "id": "urdhva_hastasana",
@@ -65,8 +65,8 @@
       "category": "standing_strength",
       "strength": 2,
       "flexibility": 2,
-      "difficulty": "beginner",
-      "is_foundational": true
+      "difficulty": 1,
+      "level": 1
     },
     {
       "id": "uttanasana",
@@ -75,8 +75,8 @@
       "category": "hamstrings",
       "strength": 1,
       "flexibility": 5,
-      "difficulty": "beginner",
-      "is_foundational": true
+      "difficulty": 1,
+      "level": 1
     },
     {
       "id": "ardha_uttanasana",
@@ -85,8 +85,8 @@
       "category": "hamstrings",
       "strength": 2,
       "flexibility": 3,
-      "difficulty": "beginner",
-      "is_foundational": true
+      "difficulty": 1,
+      "level": 1
     },
     {
       "id": "utkatasana",
@@ -95,8 +95,8 @@
       "category": "standing_strength",
       "strength": 4,
       "flexibility": 2,
-      "difficulty": "beginner",
-      "is_foundational": true
+      "difficulty": 1,
+      "level": 1
     },
     {
       "id": "plank",
@@ -105,8 +105,8 @@
       "category": "upper_body_core",
       "strength": 5,
       "flexibility": 1,
-      "difficulty": "beginner",
-      "is_foundational": true
+      "difficulty": 1,
+      "level": 1
     },
     {
       "id": "chaturanga",
@@ -115,8 +115,8 @@
       "category": "upper_body_core",
       "strength": 5,
       "flexibility": 2,
-      "difficulty": "intermediate",
-      "is_foundational": true
+      "difficulty": 2,
+      "level": 2
     },
     {
       "id": "upward_dog",
@@ -125,8 +125,8 @@
       "category": "spinal_mobility",
       "strength": 4,
       "flexibility": 4,
-      "difficulty": "intermediate",
-      "is_foundational": true
+      "difficulty": 2,
+      "level": 2
     },
     {
       "id": "downward_dog",
@@ -135,8 +135,8 @@
       "category": "hamstrings",
       "strength": 3,
       "flexibility": 4,
-      "difficulty": "beginner",
-      "is_foundational": true
+      "difficulty": 1,
+      "level": 1
     },
     {
       "id": "virabhadrasana_1",
@@ -145,98 +145,8 @@
       "category": "lunges",
       "strength": 4,
       "flexibility": 3,
-      "difficulty": "beginner",
-      "is_foundational": true
-    },
-    {
-      "id": "virabhadrasana_2",
-      "name": "Warrior II",
-      "sanskrit": "Virabhadrasana II",
-      "category": "standing_strength",
-      "strength": 4,
-      "flexibility": 3,
-      "difficulty": "beginner",
-      "is_foundational": true
-    },
-    {
-      "id": "trikonasana",
-      "name": "Triangle Pose",
-      "sanskrit": "Trikonasana",
-      "category": "standing_strength",
-      "strength": 3,
-      "flexibility": 4,
-      "difficulty": "beginner",
-      "is_foundational": true
-    },
-    {
-      "id": "anjaneyasana",
-      "name": "Low Lunge",
-      "sanskrit": "Anjaneyasana",
-      "category": "lunges",
-      "strength": 2,
-      "flexibility": 5,
-      "difficulty": "beginner",
-      "is_foundational": true
-    },
-    {
-      "id": "cobra",
-      "name": "Cobra Pose",
-      "sanskrit": "Bhujangasana",
-      "category": "spinal_mobility",
-      "strength": 3,
-      "flexibility": 4,
-      "difficulty": "beginner",
-      "is_foundational": true
-    },
-    {
-      "id": "bridge",
-      "name": "Bridge Pose",
-      "sanskrit": "Setu Bandha Sarvangasana",
-      "category": "spinal_mobility",
-      "strength": 4,
-      "flexibility": 4,
-      "difficulty": "beginner",
-      "is_foundational": true
-    },
-    {
-      "id": "tree",
-      "name": "Tree Pose",
-      "sanskrit": "Vrksasana",
-      "category": "balance",
-      "strength": 3,
-      "flexibility": 2,
-      "difficulty": "beginner",
-      "is_foundational": true
-    },
-    {
-      "id": "pigeon",
-      "name": "Pigeon Pose",
-      "sanskrit": "Eka Pada Rajakapotasana",
-      "category": "hip_openers",
-      "strength": 1,
-      "flexibility": 5,
-      "difficulty": "intermediate",
-      "is_foundational": true
-    },
-    {
-      "id": "supine_twist",
-      "name": "Supine Twist",
-      "sanskrit": "Supta Matsyendrasana",
-      "category": "recovery",
-      "strength": 1,
-      "flexibility": 3,
-      "difficulty": "beginner",
-      "is_foundational": true
-    },
-    {
-      "id": "savasana",
-      "name": "Corpse Pose",
-      "sanskrit": "Savasana",
-      "category": "recovery",
-      "strength": 0,
-      "flexibility": 0,
-      "difficulty": "beginner",
-      "is_foundational": true
+      "difficulty": 1,
+      "level": 1
     }
   ]
 }

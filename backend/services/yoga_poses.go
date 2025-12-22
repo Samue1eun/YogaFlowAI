@@ -21,3 +21,8 @@ func CreateYogaPose(newYogaPose models.YogaPoses) (models.YogaPoses, error) {
 	).Scan(&newYogaPose.ID)
 	return newYogaPose, err
 }
+
+// Update Yoga Pose
+
+// Delete Yoga Pose
+

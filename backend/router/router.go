@@ -10,6 +10,7 @@ import (
 func PageRouter() {
 	mainMux := http.NewServeMux()
 	mainMux.HandleFunc("/users", handlers.GetAllUser)
+	mainMux.HandleFunc("/yoga_poses", handlers.GetAllYogaPoses)
 
 	fmt.Println("Server starting on port :8081")
 	err := http.ListenAndServe(":8081", mainMux)

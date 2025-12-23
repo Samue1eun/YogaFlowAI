@@ -6,8 +6,8 @@ import (
 )
 
 func CreateYogaPose(newYogaPose models.YogaPoses) (models.YogaPoses, error) {
-	query := `INSERT INTO yoga_poses (id, name, sanksrit, category, strength, flexibility, difficulty, level) 
-	VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`
+	query := `INSERT INTO yoga_poses (id, name, sanskrit, category, strength, flexibility, difficulty, level) 
+	VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id`
 	err := database.Db.QueryRow(
 		query,
 		newYogaPose.ID,

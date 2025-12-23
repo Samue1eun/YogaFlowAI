@@ -1,20 +1,25 @@
 package router
 
 import (
-	"fmt"
-	"net/http"
+	// "fmt"
+	// "net/http"
+	"github.com/gin-gonic/gin"
 
 	"yogaflow.ai/handlers"
+	// "yogaflow.ai/services"
 )
 
 func PageRouter() {
-	mainMux := http.NewServeMux()
-	mainMux.HandleFunc("/users", handlers.GetAllUser)
-	mainMux.HandleFunc("/yoga_poses", handlers.GetAllYogaPoses)
-
-	fmt.Println("Server starting on port :8081")
-	err := http.ListenAndServe(":8081", mainMux)
-	if err != nil {
-		fmt.Println("Error starting the server:", err)
+	r := gin.Default()
+	v1 := r.Group("/v1")
+	{
+		v1.GET("/users", handlers.GetAllUsers)
+		v1.GET("/users/:id", handlers.GetOneUser)
+		v1.DELETE("/users/:id", handlers.DeleteUser)
+		v1.POST("/users", handlers.AddUser)
+		v1.GET("/yoga_poses", handlers.GetAllYogaPoses)
+		v1.POST("/yoga_poses", handlers.AddYogaPose)
 	}
+	
+	r.Run(":8081")
 }

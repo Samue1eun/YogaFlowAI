@@ -1,19 +1,20 @@
 package handlers
 
 import (
-	"encoding/json"
 	"net/http"
 
-	"yogaflow.ai/models"
+	"github.com/gin-gonic/gin"
+
 	"yogaflow.ai/database"
+	"yogaflow.ai/models"
+	"yogaflow.ai/services"
 )
 
-// Get All Yoga Poses
-func GetAllYogaPoses(w http.ResponseWriter, r *http.Request) {
+func GetAllYogaPoses(c *gin.Context) {
 	var yogaPoses []models.YogaPoses
 	rows, err := database.Db.Query("SELECT id, name, sanskrit, category, strength, flexibility, difficulty, level FROM yoga_poses")
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 	defer rows.Close()
@@ -22,12 +23,25 @@ func GetAllYogaPoses(w http.ResponseWriter, r *http.Request) {
 		var yogaPose models.YogaPoses
 		err := rows.Scan(&yogaPose.ID, &yogaPose.Name, &yogaPose.Sanskrit, &yogaPose.Category, &yogaPose.Strength, &yogaPose.Flexibility, &yogaPose.Difficulty, &yogaPose.Level)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 		yogaPoses = append(yogaPoses, yogaPose)
 	}
-	w.Header().Set("content-type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(yogaPoses)
+	c.IndentedJSON(http.StatusOK, yogaPoses)
+}
+
+func AddYogaPose(c *gin.Context) {
+	var newYogaPose models.YogaPoses
+	err := c.ShouldBindJSON(&newYogaPose)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	yogaPose, err := services.CreateYogaPose(newYogaPose)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, yogaPose)
 }

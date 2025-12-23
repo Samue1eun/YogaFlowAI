@@ -12,8 +12,8 @@ func CreateUser(newUser models.User) (models.User, error) {
 	newUser.CreatedAt = now
 	newUser.UpdatedAt = now
 
-query := `INSERT INTO users (username, email, passwordhash, firstname, lastname, bio, avatarurl, role, isactive)
-          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id`
+	query := `INSERT INTO users (username, email, passwordhash, firstname, lastname, bio, avatarurl, role, isactive)
+        	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id`
 	err := database.Db.QueryRow(
 		query,
 		newUser.Username,
@@ -29,9 +29,25 @@ query := `INSERT INTO users (username, email, passwordhash, firstname, lastname,
 	return newUser, err
 }
 
-// func UpdateUser() {
+// Need to test this endpoint still
 
-// }
+func UpdateUser(updatedUser models.User) (models.User, error) {
+	query := `UPDATE users SET username=$1, email=$2, passwordhash=$3, firstname=$5, lastname=$5, bio=$6, avatarurl=$7, role=$8, isactive=$9, updatedat=Now() WHERE id=$10`
+	_, err := database.Db.Exec(
+		query,
+		updatedUser.Username,
+		updatedUser.Email,
+		updatedUser.PasswordHash,
+		updatedUser.FirstName,
+		updatedUser.LastName,
+		updatedUser.Bio,
+		updatedUser.AvatarURL,
+		updatedUser.Role,
+		updatedUser.IsActive,
+		updatedUser.ID,
+	)
+	return updatedUser, err
+}
 
 // func DeleteUser() {
 

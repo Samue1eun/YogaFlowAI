@@ -2,6 +2,7 @@ package services
 
 import (
 	"time"
+	"log"
 
 	"yogaflow.ai/database"
 	"yogaflow.ai/models"
@@ -49,6 +50,11 @@ func UpdateUser(updatedUser models.User) (models.User, error) {
 	return updatedUser, err
 }
 
-// func DeleteUser() {
-
-// }
+func DeleteUser(id uint) bool {
+	_, err := database.Db.Exec("DELETE FROM users WHERE id =$1", id)
+	if err != nil {
+		log.Println(err)
+		return false
+	}
+	return true
+}

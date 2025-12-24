@@ -31,7 +31,7 @@ func CreateUser(newUser models.User) (models.User, error) {
 }
 
 func UpdateUser(updatedUser models.User) (models.User, error) {
-	query := `UPDATE users SET username=$1, email=$2, passwordhash=$3, firstname=$5, lastname=$5, bio=$6, avatarurl=$7, role=$8, isactive=$9, updatedat=Now() WHERE id=$10`
+	query := `UPDATE users SET username=$1, email=$2, passwordhash=$3, firstname=$4, lastname=$5, bio=$6, avatarurl=$7, role=$8, isactive=$9, updatedat=Now() WHERE id=$10`
 	_, err := database.Db.Exec(
 		query,
 		updatedUser.Username,

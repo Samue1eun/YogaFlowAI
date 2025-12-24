@@ -23,6 +23,20 @@ func CreateYogaPose(newYogaPose models.YogaPoses) (models.YogaPoses, error) {
 }
 
 // Update Yoga Pose
+func UpdateYogaPose (updatedYogaPose models.YogaPoses) (models.YogaPoses, error) {
+	query := `UPDATE yoga_poses SET name=$1, sandskrit=$2, category=$3, strength=$4, flexibility=$5, difficulty=$6, level=$7`
+	_, err := database.Db.Exec(
+		query,
+		updatedYogaPose.Name,
+		updatedYogaPose.Sanskrit,
+		updatedYogaPose.Category,
+		updatedYogaPose.Strength,
+		updatedYogaPose.Flexibility,
+		updatedYogaPose.Difficulty,
+		updatedYogaPose.Level,
+	)
+	return updatedYogaPose, err
+}
 
 // Delete Yoga Pose
 

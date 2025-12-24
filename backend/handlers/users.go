@@ -91,6 +91,22 @@ func AddUser(c *gin.Context) {
 	c.JSON(http.StatusCreated, user)
 }
 
+// Update User
+func UpdateUser(c *gin.Context) {
+	var updateUser models.User
+	err := c.ShouldBindJSON(&updateUser)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	user, err := services.UpdateUser(updateUser)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, user)
+}
+
 // Delete User
 func DeleteUser(c *gin.Context) {
 	id := c.Param("id")

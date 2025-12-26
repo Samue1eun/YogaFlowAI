@@ -1,6 +1,8 @@
 package services
 
 import (
+	"log"
+
 	"yogaflow.ai/database"
 	"yogaflow.ai/models"
 )
@@ -39,4 +41,11 @@ func UpdateYogaPose (updatedYogaPose models.YogaPoses) (models.YogaPoses, error)
 }
 
 // Delete Yoga Pose
-
+func DeleteYogaPose (deleteYogaPose models.YogaPoses) (models.YogaPoses, error) {
+	_, err := database.Db.Exec("DELETE FROM yoga_pose WHERE id =$1", deleteYogaPose.ID)
+	if err != nil {
+		log.Println(err)
+		return deleteYogaPose, err
+	}
+	return deleteYogaPose, nil
+}

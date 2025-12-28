@@ -31,6 +31,20 @@ func GetAllYogaPoses(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, yogaPoses)
 }
 
+func GetOneYogaPose(c *gin.Context) {
+	id := c.Param("id")
+	var yogaPose models.YogaPoses
+	err := database.Db.QueryRow(
+		"SELECT id, name, sanskrit, category, strength, flexibility, difficulty, level FROM yoga_poses WHERE id = $1",
+		id,
+	).Scan(&yogaPose.ID, &yogaPose.Name, &yogaPose.Sanskrit, &yogaPose.Category, &yogaPose.Strength, &yogaPose.Flexibility, &yogaPose.Difficulty, &yogaPose.Level)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Yoga pose not found"})
+		return
+	}
+	c.JSON(http.StatusOK, yogaPose)
+}
+
 func AddYogaPose(c *gin.Context) {
 	var newYogaPose models.YogaPoses
 	err := c.ShouldBindJSON(&newYogaPose)

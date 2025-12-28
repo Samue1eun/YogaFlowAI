@@ -19,6 +19,7 @@ func PageRouter() {
 		v1.PUT("/users/:id", handlers.UpdateUser)
 		v1.POST("/users", handlers.AddUser)
 		v1.GET("/yoga_poses", handlers.GetAllYogaPoses)
+		v1.GET("/yoga_poses/:id", handlers.GetOneYogaPose)
 		v1.POST("/yoga_poses", handlers.AddYogaPose)
 	}
 	

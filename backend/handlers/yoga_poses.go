@@ -75,5 +75,5 @@ func DeleteYogaPose(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, gin{"message": "Yoga pose deleted", "Yoga pose": yogaPose})
+	c.JSON(http.StatusOK, gin.H{"message": "Yoga pose deleted", "Yoga pose": yogaPose})
 	}

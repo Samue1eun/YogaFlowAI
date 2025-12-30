@@ -77,3 +77,27 @@ func DeleteYogaPose(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"message": "Yoga pose deleted", "Yoga pose": yogaPose})
 }
+
+// Add bulk yoga poses
+
+func AddBulkYogaPoses(c *gin.Context) {
+	var addBulkYogaPoses []models.YogaPoses
+	err := c.ShouldBindBodyWithJSON(&addBulkYogaPoses)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	query := `INSERT INTO yoga_poses (id, name, sanskrit, category, strength, flexibility, difficulty, level)
+				VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`
+	for _, pose := range addBulkYogaPoses {
+		_, err := database.Db.Exec(query,
+			pose.ID, pose.Name, pose.Sanskrit, pose.Category,
+			pose.Strength, pose.Flexibility, pose.Difficulty, pose.Level)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"status": "success"})
+	}
+}

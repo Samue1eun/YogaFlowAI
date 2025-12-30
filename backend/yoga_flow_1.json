@@ -1,0 +1,95 @@
+[
+  { "id":"pose_001","name":"Mountain Pose","sanskrit":"Tadasana","category":"Standing","strength":2,"flexibility":2,"difficulty":1,"level":1 },
+  { "id":"pose_002","name":"Forward Fold","sanskrit":"Uttanasana","category":"Standing","strength":2,"flexibility":4,"difficulty":1,"level":1 },
+  { "id":"pose_003","name":"Half Lift","sanskrit":"Ardha Uttanasana","category":"Standing","strength":3,"flexibility":3,"difficulty":2,"level":1 },
+  { "id":"pose_004","name":"Downward Dog","sanskrit":"Adho Mukha Svanasana","category":"Inversion","strength":4,"flexibility":5,"difficulty":3,"level":2 },
+  { "id":"pose_005","name":"Plank","sanskrit":"Phalakasana","category":"Core","strength":5,"flexibility":2,"difficulty":3,"level":2 },
+
+  { "id":"pose_006","name":"Chaturanga","sanskrit":"Chaturanga Dandasana","category":"Arm Balance","strength":5,"flexibility":3,"difficulty":4,"level":3 },
+  { "id":"pose_007","name":"Upward Dog","sanskrit":"Urdhva Mukha Svanasana","category":"Backbend","strength":4,"flexibility":5,"difficulty":3,"level":2 },
+  { "id":"pose_008","name":"Cobra","sanskrit":"Bhujangasana","category":"Backbend","strength":3,"flexibility":4,"difficulty":2,"level":1 },
+  { "id":"pose_009","name":"Child’s Pose","sanskrit":"Balasana","category":"Restorative","strength":0,"flexibility":2,"difficulty":1,"level":1 },
+  { "id":"pose_010","name":"Chair","sanskrit":"Utkatasana","category":"Standing","strength":5,"flexibility":2,"difficulty":3,"level":2 },
+
+  { "id":"pose_011","name":"Warrior I","sanskrit":"Virabhadrasana I","category":"Standing","strength":4,"flexibility":4,"difficulty":2,"level":2 },
+  { "id":"pose_012","name":"Warrior II","sanskrit":"Virabhadrasana II","category":"Standing","strength":4,"flexibility":3,"difficulty":2,"level":2 },
+  { "id":"pose_013","name":"Reverse Warrior","sanskrit":"Viparita Virabhadrasana","category":"Standing","strength":4,"flexibility":4,"difficulty":3,"level":2 },
+  { "id":"pose_014","name":"Extended Side Angle","sanskrit":"Utthita Parsvakonasana","category":"Standing","strength":4,"flexibility":5,"difficulty":3,"level":2 },
+  { "id":"pose_015","name":"Triangle","sanskrit":"Trikonasana","category":"Standing","strength":3,"flexibility":5,"difficulty":2,"level":2 },
+
+  { "id":"pose_016","name":"Half Moon","sanskrit":"Ardha Chandrasana","category":"Balance","strength":4,"flexibility":4,"difficulty":4,"level":3 },
+  { "id":"pose_017","name":"Bound Half Moon","sanskrit":"Baddha Ardha Chandrasana","category":"Balance","strength":5,"flexibility":5,"difficulty":5,"level":4 },
+  { "id":"pose_018","name":"Sugarcane Pose","sanskrit":"Ardha Chandra Chapasana","category":"Balance","strength":5,"flexibility":5,"difficulty":5,"level":4 },
+  { "id":"pose_019","name":"Tree","sanskrit":"Vrksasana","category":"Balance","strength":3,"flexibility":3,"difficulty":3,"level":2 },
+  { "id":"pose_020","name":"Eagle","sanskrit":"Garudasana","category":"Balance","strength":4,"flexibility":3,"difficulty":4,"level":3 },
+
+  { "id":"pose_021","name":"Dancer","sanskrit":"Natarajasana","category":"Balance","strength":4,"flexibility":5,"difficulty":4,"level":3 },
+  { "id":"pose_022","name":"Standing Splits","sanskrit":"Urdhva Prasarita Eka Padasana","category":"Balance","strength":4,"flexibility":5,"difficulty":4,"level":3 },
+  { "id":"pose_023","name":"Chair Twist","sanskrit":"Parivrtta Utkatasana","category":"Twist","strength":4,"flexibility":3,"difficulty":4,"level":3 },
+  { "id":"pose_024","name":"Revolved Triangle","sanskrit":"Parivrtta Trikonasana","category":"Twist","strength":4,"flexibility":4,"difficulty":4,"level":3 },
+  { "id":"pose_025","name":"Revolved Half Moon","sanskrit":"Parivrtta Ardha Chandrasana","category":"Twist","strength":5,"flexibility":4,"difficulty":5,"level":4 },
+
+  { "id":"pose_026","name":"Low Lunge","sanskrit":"Anjaneyasana","category":"Standing","strength":3,"flexibility":4,"difficulty":2,"level":1 },
+  { "id":"pose_027","name":"Crescent Lunge","sanskrit":"Ashta Chandrasana","category":"Standing","strength":4,"flexibility":4,"difficulty":3,"level":2 },
+  { "id":"pose_028","name":"Twisted Crescent","sanskrit":"Parivrtta Ashta Chandrasana","category":"Twist","strength":5,"flexibility":4,"difficulty":4,"level":3 },
+  { "id":"pose_029","name":"Pyramid","sanskrit":"Parsvottanasana","category":"Standing","strength":3,"flexibility":5,"difficulty":3,"level":2 },
+  { "id":"pose_030","name":"Wide-Leg Fold","sanskrit":"Prasarita Padottanasana","category":"Standing","strength":3,"flexibility":5,"difficulty":2,"level":2 },
+
+  { "id":"pose_031","name":"Goddess","sanskrit":"Utkata Konasana","category":"Standing","strength":5,"flexibility":3,"difficulty":3,"level":2 },
+  { "id":"pose_032","name":"Malasana","sanskrit":"Malasana","category":"Hip Opener","strength":2,"flexibility":5,"difficulty":2,"level":1 },
+  { "id":"pose_033","name":"Yogi Squat Twist","sanskrit":"Parivrtta Malasana","category":"Twist","strength":3,"flexibility":5,"difficulty":3,"level":2 },
+  { "id":"pose_034","name":"Crow","sanskrit":"Bakasana","category":"Arm Balance","strength":5,"flexibility":3,"difficulty":5,"level":4 },
+  { "id":"pose_035","name":"Side Crow","sanskrit":"Parsva Bakasana","category":"Arm Balance","strength":5,"flexibility":4,"difficulty":5,"level":4 },
+
+  { "id":"pose_036","name":"Flying Crow","sanskrit":"Eka Pada Bakasana","category":"Arm Balance","strength":5,"flexibility":4,"difficulty":5,"level":5 },
+  { "id":"pose_037","name":"Firefly","sanskrit":"Tittibhasana","category":"Arm Balance","strength":5,"flexibility":5,"difficulty":5,"level":5 },
+  { "id":"pose_038","name":"Eight Angle","sanskrit":"Astavakrasana","category":"Arm Balance","strength":5,"flexibility":4,"difficulty":5,"level":5 },
+  { "id":"pose_039","name":"Peacock","sanskrit":"Mayurasana","category":"Arm Balance","strength":5,"flexibility":3,"difficulty":5,"level":5 },
+  { "id":"pose_040","name":"Scorpion Prep","sanskrit":"Vrschikasana Prep","category":"Inversion","strength":5,"flexibility":5,"difficulty":5,"level":5 },
+
+  { "id":"pose_041","name":"Headstand","sanskrit":"Sirsasana","category":"Inversion","strength":4,"flexibility":3,"difficulty":5,"level":4 },
+  { "id":"pose_042","name":"Tripod Headstand","sanskrit":"Mukta Hasta Sirsasana","category":"Inversion","strength":5,"flexibility":3,"difficulty":5,"level":4 },
+  { "id":"pose_043","name":"Forearm Stand","sanskrit":"Pincha Mayurasana","category":"Inversion","strength":5,"flexibility":4,"difficulty":5,"level":4 },
+  { "id":"pose_044","name":"Scorpion","sanskrit":"Vrschikasana","category":"Inversion","strength":5,"flexibility":5,"difficulty":5,"level":5 },
+  { "id":"pose_045","name":"Handstand","sanskrit":"Adho Mukha Vrksasana","category":"Inversion","strength":5,"flexibility":4,"difficulty":5,"level":5 },
+
+  { "id":"pose_046","name":"Handstand Split","sanskrit":"Eka Pada Adho Mukha Vrksasana","category":"Inversion","strength":5,"flexibility":5,"difficulty":5,"level":5 },
+  { "id":"pose_047","name":"Wheel","sanskrit":"Urdhva Dhanurasana","category":"Backbend","strength":5,"flexibility":5,"difficulty":5,"level":4 },
+  { "id":"pose_048","name":"One-Leg Wheel","sanskrit":"Eka Pada Urdhva Dhanurasana","category":"Backbend","strength":5,"flexibility":5,"difficulty":5,"level":5 },
+  { "id":"pose_049","name":"Camel","sanskrit":"Ustrasana","category":"Backbend","strength":4,"flexibility":5,"difficulty":4,"level":3 },
+  { "id":"pose_050","name":"Laghu Vajrasana","sanskrit":"Laghu Vajrasana","category":"Backbend","strength":5,"flexibility":5,"difficulty":5,"level":5 },
+
+  { "id":"pose_051","name":"King Pigeon","sanskrit":"Raja Kapotasana","category":"Hip Opener","strength":4,"flexibility":5,"difficulty":5,"level":5 },
+  { "id":"pose_052","name":"Mermaid","sanskrit":"Eka Pada Rajakapotasana Mermaid","category":"Hip Opener","strength":4,"flexibility":5,"difficulty":4,"level":4 },
+  { "id":"pose_053","name":"Compass","sanskrit":"Parivrtta Surya Yantrasana","category":"Hip Opener","strength":4,"flexibility":5,"difficulty":5,"level":5 },
+  { "id":"pose_054","name":"Grasshopper","sanskrit":"Maksikanagasana","category":"Arm Balance","strength":5,"flexibility":4,"difficulty":5,"level":5 },
+  { "id":"pose_055","name":"Flying Pigeon","sanskrit":"Eka Pada Galavasana","category":"Arm Balance","strength":5,"flexibility":4,"difficulty":5,"level":5 },
+
+  { "id":"pose_056","name":"Lotus","sanskrit":"Padmasana","category":"Seated","strength":1,"flexibility":5,"difficulty":3,"level":3 },
+  { "id":"pose_057","name":"Bound Lotus","sanskrit":"Baddha Padmasana","category":"Seated","strength":2,"flexibility":5,"difficulty":4,"level":4 },
+  { "id":"pose_058","name":"Floating Lotus","sanskrit":"Tolasana","category":"Arm Balance","strength":5,"flexibility":4,"difficulty":5,"level":5 },
+  { "id":"pose_059","name":"Boat","sanskrit":"Navasana","category":"Core","strength":5,"flexibility":2,"difficulty":4,"level":3 },
+  { "id":"pose_060","name":"Low Boat","sanskrit":"Ardha Navasana","category":"Core","strength":5,"flexibility":1,"difficulty":4,"level":3 },
+
+  { "id":"pose_061","name":"Forearm Plank","sanskrit":"Makara Adho Mukha Svanasana","category":"Core","strength":5,"flexibility":2,"difficulty":4,"level":3 },
+  { "id":"pose_062","name":"Side Plank","sanskrit":"Vasisthasana","category":"Core","strength":5,"flexibility":3,"difficulty":4,"level":3 },
+  { "id":"pose_063","name":"Wild Thing","sanskrit":"Camatkarasana","category":"Backbend","strength":4,"flexibility":5,"difficulty":4,"level":3 },
+  { "id":"pose_064","name":"Fallen Triangle","sanskrit":"Patita Tarasana","category":"Transition","strength":4,"flexibility":4,"difficulty":4,"level":3 },
+  { "id":"pose_065","name":"Skandasana","sanskrit":"Skandasana","category":"Hip Opener","strength":4,"flexibility":5,"difficulty":4,"level":3 },
+
+  { "id":"pose_066","name":"Side Lunge Twist","sanskrit":"Parivrtta Skandasana","category":"Twist","strength":4,"flexibility":5,"difficulty":5,"level":4 },
+  { "id":"pose_067","name":"Dragon Pose","sanskrit":"Yin Lunge","category":"Hip Opener","strength":2,"flexibility":5,"difficulty":3,"level":2 },
+  { "id":"pose_068","name":"Toe Stand","sanskrit":"Padangustasana","category":"Balance","strength":4,"flexibility":3,"difficulty":4,"level":3 },
+  { "id":"pose_069","name":"Reclined Hero","sanskrit":"Supta Virasana","category":"Backbend","strength":2,"flexibility":5,"difficulty":4,"level":3 },
+  { "id":"pose_070","name":"Fish","sanskrit":"Matsyasana","category":"Backbend","strength":2,"flexibility":4,"difficulty":2,"level":2 },
+
+  { "id":"pose_071","name":"Plow","sanskrit":"Halasana","category":"Inversion","strength":2,"flexibility":5,"difficulty":3,"level":2 },
+  { "id":"pose_072","name":"Shoulder Stand","sanskrit":"Sarvangasana","category":"Inversion","strength":3,"flexibility":3,"difficulty":4,"level":3 },
+  { "id":"pose_073","name":"Ear Pressure","sanskrit":"Karnapidasana","category":"Inversion","strength":3,"flexibility":5,"difficulty":4,"level":3 },
+  { "id":"pose_074","name":"Supine Twist","sanskrit":"Supta Matsyendrasana","category":"Twist","strength":1,"flexibility":3,"difficulty":1,"level":1 },
+  { "id":"pose_075","name":"Happy Baby","sanskrit":"Ananda Balasana","category":"Restorative","strength":0,"flexibility":3,"difficulty":1,"level":1 },
+
+  { "id":"pose_076","name":"Legs Up Wall","sanskrit":"Viparita Karani","category":"Restorative","strength":0,"flexibility":1,"difficulty":1,"level":1 },
+  { "id":"pose_077","name":"Reclined Bound Angle","sanskrit":"Supta Baddha Konasana","category":"Restorative","strength":0,"flexibility":3,"difficulty":1,"level":1 },
+  { "id":"pose_078","name":"Corpse","sanskrit":"Savasana","category":"Restorative","strength":0,"flexibility":0,"difficulty":1,"level":1 }
+]

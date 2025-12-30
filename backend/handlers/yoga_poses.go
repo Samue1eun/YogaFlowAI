@@ -61,10 +61,19 @@ func AddYogaPose(c *gin.Context) {
 }
 
 func DeleteYogaPose(c *gin.Context) {
-	var deleteYogaPose models.YogaPoses
+	id := c.Param("id")
+	var yogaPose models.YogaPoses
+	err := database.Db.QueryRow("SELECT id, name, sanskrit, category, strength, flexibility, difficulty, level WHERE id = $1", id).
+		Scan(&yogaPose.ID, &yogaPose.Sanskrit, &yogaPose.Category, &yogaPose.Strength, &yogaPose.Flexibility, &yogaPose.Difficulty, &yogaPose.Level)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusNotFound, gin.H{"error": "Yoga pose not found"})
 		return
 	}
-	
-}
+
+	_, err = database.Db.Exec("DELETE FROM yogaPose WHERE id = $1", id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin{"message": "Yoga pose deleted", "Yoga pose": yogaPose})
+	}

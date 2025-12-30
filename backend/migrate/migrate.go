@@ -1,8 +1,9 @@
 package main
 
 import (
-	"go-jwt-auth/initializers"
-	"go-jwt-auth/models"
+	"yogaflow.ai/backend/initializers"
+
+	"yogaflow.ai/models"
 )
 
 func init() {
@@ -11,5 +12,5 @@ func init() {
 }
 
 func main() {
-	
+	initializers.DB.AutoMigrate(&models.User{})
 }

@@ -15,6 +15,7 @@ type User struct {
 	UpdatedAt time.Time `json:"updatedat"`
 	Role string `json:"role"`
 	IsActive bool `json:"isactive"`
+	Flows []UserFlows `json:"flows"`
 }
 
 // Role is for admin!

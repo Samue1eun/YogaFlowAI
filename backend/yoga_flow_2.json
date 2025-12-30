@@ -106,9 +106,10 @@
   { "id":"pose_149","name":"Single-Leg RDL","sanskrit":"Balance Hinge","category":"Strength","strength":4,"flexibility":4,"difficulty":3,"level":2 },
 
   { "id":"pose_150","name":"Deep Lizard Twist","sanskrit":"Utthan Pristhasana Twist","category":"Hip Opener","strength":3,"flexibility":5,"difficulty":4,"level":3 }
+]
+
 
   // Poses 151–300 continue in the same schema:
   // Advanced arm balances, press drills, plyometric vinyasa,
   // loaded mobility, inversion endurance holds,
   // creative transitions, athletic floor flows.
-]

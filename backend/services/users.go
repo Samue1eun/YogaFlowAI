@@ -49,7 +49,7 @@ func UpdateUser(updatedUser models.User) (models.User, error) {
 }
 
 func DeleteUser(id uint) bool {
-	_, err := database.Db.Exec("DELETE FROM users WHERE id =$1", id)
+	_, err := database.Db.Exec("DELETE FROM users WHERE id = $1", id)
 	if err != nil {
 		log.Println(err)
 		return false

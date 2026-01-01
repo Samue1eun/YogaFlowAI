@@ -1,6 +1,8 @@
 package services
 
 import (
+	"log"
+	
 	"yogaflow.ai/database"
 	"yogaflow.ai/models"
 )
@@ -18,4 +20,13 @@ func CreateUserFlow(newFlow models.UserFlows) (models.UserFlows, error) {
 		newFlow.UserID,
 	).Scan(&newFlow.ID)
 	return newFlow, err
+}
+
+func DeleteUserFlow(id uint) bool {
+	_, err := database.Db.Exec("DELETE FROM user_flows WHERE id = $1", id)
+	if err != nil {
+		log.Println(err)
+		return false
+	}
+	return true
 }

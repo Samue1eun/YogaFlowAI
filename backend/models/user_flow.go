@@ -2,7 +2,7 @@ package models
 
 type UserFlows struct {
 	ID string `json:"id"`
-	NumberOfFlows int `json:"numberofflows"`
+	UsedID int `json:"user_id"`
 	UserFlowList []YogaFlow `json:"flowlist"`
 	UserID int `json:"user_id"`
 }

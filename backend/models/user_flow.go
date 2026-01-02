@@ -1,14 +1,14 @@
 package models
 
+import (
+	"time"
+)
+
 type UserFlows struct {
 	ID string `json:"id"`
 	UsedID int `json:"user_id"`
-	UserFlowList []YogaFlow `json:"flowlist"`
-	UserID int `json:"user_id"`
-}
-
-func (uf *UserFlows) UpdateNumberOfPoses() {
-	uf.NumberOfFlows = len(uf.UserFlowList)
+	YogaFlowID string `json:"yoga_flow_id"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 

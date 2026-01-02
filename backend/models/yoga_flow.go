@@ -11,4 +11,4 @@ type YogaFlow struct {
 	AverageDifficulty int `json:"average_difficulty"`
 }
 
-// Update PSQL (January 2nd, 2026)
+// Update PSQL (Table Created January 2nd, 2026)

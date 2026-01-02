@@ -11,4 +11,4 @@ type UserFavorites struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
-// Update PSQL
+// Update PSQL (Table Created January 2nd, 2026)

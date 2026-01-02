@@ -14,4 +14,4 @@ type UserProfile struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
-// Update PSQL (Updated on January 2nd, 2026)
+// Update PSQL (Table Created January 2nd, 2026)

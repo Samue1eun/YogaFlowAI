@@ -19,7 +19,7 @@ type User struct {
 	IsActive bool `json:"is_active"`
 }
 
-// Update PSQL (Completed January 2nd, 2026)
+// Update PSQL (Table Created January 2nd, 2026)
 
 // Role is for admin!
 // Add in what type of user it is (teacher, student)

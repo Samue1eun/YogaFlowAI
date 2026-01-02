@@ -14,4 +14,4 @@ type WorkoutSession struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
-// Update PSQL (Created at January 2nd, 2026)
+// Update PSQL (Table Created January 2nd, 2026)

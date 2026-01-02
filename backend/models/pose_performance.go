@@ -12,4 +12,4 @@ type PosePerformance struct {
 	LastAttempted time.Time `json:"last_attempted"`
 }
 
-// Update PSQL (Updated January 2nd, 2026)
+// Update PSQL (Table Created January 2nd, 2026)

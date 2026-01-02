@@ -11,3 +11,5 @@ type UserProgress struct {
 	SessionsCompleted int `json:"sessions_completed"`
 	TotalTime int `json:"total_time"`
 }
+
+// Update PSQL

@@ -11,3 +11,5 @@ type PosePerformance struct {
 	DifficultyRating int `json:"difficulty_rating"`
 	LastAttempted time.Time `json:"last_attempted"`
 }
+
+// Update PSQL

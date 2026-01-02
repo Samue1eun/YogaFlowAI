@@ -13,3 +13,5 @@ type WorkoutSession struct {
 	Feedback string `json:"feedback"`
 	CreatedAt time.Time `json:"created_at"`
 }
+
+// Update PSQL

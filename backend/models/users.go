@@ -14,9 +14,12 @@ type User struct {
 	CreatedAt time.Time `json:"created"`
 	UpdatedAt time.Time `json:"updatedat"`
 	Role string `json:"role"`
+	UserType string `json:"user_type"`
+	Tier string `json:"tier"`
 	IsActive bool `json:"isactive"`
-	Flows []UserFlows `json:"flows"`
 }
+
+// Update PSQL
 
 // Role is for admin!
 // Add in what type of user it is (teacher, student)

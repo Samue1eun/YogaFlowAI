@@ -10,3 +10,5 @@ type YogaFlow struct {
 	AverageFlexibility int `json:"averageflexibility"`
 	AverageDifficulty int `json:"averagedifficulty"`
 }
+
+// Update PSQL

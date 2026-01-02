@@ -11,4 +11,4 @@ type YogaPoses struct {
 	Level int `json:"level"`
 }
 
-// Update PSQL (Updated January 2nd, 2025)
+// Update PSQL (Updated January 2nd, 2026)

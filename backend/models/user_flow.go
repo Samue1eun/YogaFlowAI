@@ -11,4 +11,4 @@ type UserFlows struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
-// Update PSQL (Completed January 2nd, 2025)
+// Update PSQL (Completed January 2nd, 2026)

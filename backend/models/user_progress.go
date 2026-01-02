@@ -12,4 +12,4 @@ type UserProgress struct {
 	TotalTime int `json:"total_time"`
 }
 
-// Update PSQL
+// Update PSQL (Updated January 2nd, 2026)

@@ -6,20 +6,20 @@ type User struct {
 	ID int `json:"id"`
 	Username string `json:"username"`
 	Email string `json:"email"`
-	PasswordHash string `json:"passwordhash"`
-	FirstName string `json:"firstname"`
-	LastName string `json:"lastname"`
+	PasswordHash string `json:"password_hash"`
+	FirstName string `json:"first_name"`
+	LastName string `json:"last_name"`
 	Bio string `json:"bio"`
-	AvatarURL string `json:"avatarurl"`
-	CreatedAt time.Time `json:"created"`
-	UpdatedAt time.Time `json:"updatedat"`
+	AvatarURL string `json:"avatar_url"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 	Role string `json:"role"`
 	UserType string `json:"user_type"`
 	Tier string `json:"tier"`
-	IsActive bool `json:"isactive"`
+	IsActive bool `json:"is_active"`
 }
 
-// Update PSQL
+// Update PSQL (Completed January 2nd, 2025)
 
 // Role is for admin!
 // Add in what type of user it is (teacher, student)

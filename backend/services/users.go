@@ -8,6 +8,8 @@ import (
 	"yogaflow.ai/models"
 )
 
+// Update service based off of New User Model
+
 func CreateUser(newUser models.User) (models.User, error) {
 	now := time.Now()
 	newUser.CreatedAt = now
@@ -32,29 +34,29 @@ func CreateUser(newUser models.User) (models.User, error) {
 	return newUser, err
 }
 
-func UpdateUser(updatedUser models.User) (models.User, error) {
-	query := `UPDATE users SET username=$1, email=$2, passwordhash=$3, firstname=$4, lastname=$5, bio=$6, avatarurl=$7, role=$8, isactive=$9, updatedat=Now() WHERE id=$10`
-	_, err := database.Db.Exec(
-		query,
-		updatedUser.Username,
-		updatedUser.Email,
-		updatedUser.PasswordHash,
-		updatedUser.FirstName,
-		updatedUser.LastName,
-		updatedUser.Bio,
-		updatedUser.AvatarURL,
-		updatedUser.Role,
-		updatedUser.IsActive,
-		updatedUser.ID,
-	)
-	return updatedUser, err
-}
+// func UpdateUser(updatedUser models.User) (models.User, error) {
+// 	query := `UPDATE users SET username=$1, email=$2, passwordhash=$3, firstname=$4, lastname=$5, bio=$6, avatarurl=$7, role=$8, isactive=$9, updatedat=Now() WHERE id=$10`
+// 	_, err := database.Db.Exec(
+// 		query,
+// 		updatedUser.Username,
+// 		updatedUser.Email,
+// 		updatedUser.PasswordHash,
+// 		updatedUser.FirstName,
+// 		updatedUser.LastName,
+// 		updatedUser.Bio,
+// 		updatedUser.AvatarURL,
+// 		updatedUser.Role,
+// 		updatedUser.IsActive,
+// 		updatedUser.ID,
+// 	)
+// 	return updatedUser, err
+// }
 
-func DeleteUser(id uint) bool {
-	_, err := database.Db.Exec("DELETE FROM users WHERE id = $1", id)
-	if err != nil {
-		log.Println(err)
-		return false
-	}
-	return true
-}
+// func DeleteUser(id uint) bool {
+// 	_, err := database.Db.Exec("DELETE FROM users WHERE id = $1", id)
+// 	if err != nil {
+// 		log.Println(err)
+// 		return false
+// 	}
+// 	return true
+// }

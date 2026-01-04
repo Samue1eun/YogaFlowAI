@@ -8,7 +8,7 @@ import (
 
 	"yogaflow.ai/database"
 	"yogaflow.ai/models"
-	"yogaflow.ai/services"
+	// "yogaflow.ai/services"
 )
 
 // Update User handler
@@ -17,7 +17,7 @@ import (
 
 func GetAllUsers(c *gin.Context) {
 	var users []models.User
-	rows, err := database.Db.Query("SELECT id, username, email, firstname, lastname, bio, avatarurl, role, usertype, tier, isactive FROM users")
+	rows, err := database.Db.Query("SELECT id, username, email, first_name, last_name, bio, avatar_url, role, user_type, tier, is_active FROM users")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

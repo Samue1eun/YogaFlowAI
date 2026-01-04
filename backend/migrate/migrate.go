@@ -1,16 +1,16 @@
 package main
 
-import (
-	"yogaflow.ai/backend/initializers"
+// import (
+// 	"yogaflow.ai/backend/initializers"
 
-	"yogaflow.ai/models"
-)
+// 	"yogaflow.ai/models"
+// )
 
-func init() {
-	initializers.LoadEnvs()
-	initializers.ConnectDB()
-}
+// func init() {
+// 	initializers.LoadEnvs()
+// 	initializers.ConnectDB()
+// }
 
-func main() {
-	initializers.DB.AutoMigrate(&models.User{})
-}
+// func main() {
+// 	initializers.DB.AutoMigrate(&models.User{})
+// }

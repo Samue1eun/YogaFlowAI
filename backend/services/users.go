@@ -25,6 +25,8 @@ func CreateUser(newUser models.User) (models.User, error) {
 		newUser.Bio,
 		newUser.AvatarURL,
 		newUser.Role,
+		newUser.UserType,
+		newUser.Tierm
 		newUser.IsActive,
 	).Scan(&newUser.ID)
 	return newUser, err

@@ -15,8 +15,8 @@ func CreateUser(newUser models.User) (models.User, error) {
 	newUser.CreatedAt = now
 	newUser.UpdatedAt = now
 
-	query := `INSERT INTO users (username, email, passwordhash, first_name, last_name, bio, avatar_url, role, is_active)
-        	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id`
+	query := `INSERT INTO users (username, email, password_hash, first_name, last_name, bio, avatar_url, role, user_type, tier, is_active)
+        	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id`
 	err := database.Db.QueryRow(
 		query,
 		newUser.Username,

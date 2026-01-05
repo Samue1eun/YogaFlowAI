@@ -14,8 +14,9 @@ func PageRouter() {
 	v1 := r.Group("/v1")
 	{
 		v1.GET("/users", handlers.GetAllUsers)
+		v1.GET("/users/adminaccess", handlers.GetAllUsersAdmin)
 		// v1.GET("/users/:id", handlers.GetOneUser)
-		// v1.DELETE("/users/:id", handlers.DeleteUser)
+		v1.DELETE("/users/:id", handlers.DeleteUser)
 		// v1.PUT("/users/:id", handlers.UpdateUser)
 		v1.POST("/users", handlers.AddUser)
 		v1.GET("/yoga_poses", handlers.GetAllYogaPoses)
@@ -24,6 +25,6 @@ func PageRouter() {
 		v1.POST("/yoga_poses/bulkadd", handlers.AddBulkYogaPoses)
 		v1.DELETE("/yoga_poses/:id", handlers.DeleteYogaPose)
 	}
-	
+
 	r.Run(":8081")
 }

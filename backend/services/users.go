@@ -2,7 +2,7 @@ package services
 
 import (
 	"time"
-	// "log"
+	"log"
 
 	"yogaflow.ai/database"
 	"yogaflow.ai/models"
@@ -15,8 +15,8 @@ func CreateUser(newUser models.User) (models.User, error) {
 	newUser.CreatedAt = now
 	newUser.UpdatedAt = now
 
-	query := `INSERT INTO users (username, email, password_hash, first_name, last_name, bio, avatar_url, role, user_type, tier, is_active)
-        	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id`
+	query := `INSERT INTO users (id, username, email, password_hash, first_name, last_name, bio, avatar_url, created_at, updated_at, role, user_type, tier, is_active)
+        	VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`
 	err := database.Db.QueryRow(
 		query,
 		newUser.Username,
@@ -26,6 +26,8 @@ func CreateUser(newUser models.User) (models.User, error) {
 		newUser.LastName,
 		newUser.Bio,
 		newUser.AvatarURL,
+		now,
+		now,
 		newUser.Role,
 		newUser.UserType,
 		newUser.Tier,
@@ -52,11 +54,11 @@ func CreateUser(newUser models.User) (models.User, error) {
 // 	return updatedUser, err
 // }
 
-// func DeleteUser(id uint) bool {
-// 	_, err := database.Db.Exec("DELETE FROM users WHERE id = $1", id)
-// 	if err != nil {
-// 		log.Println(err)
-// 		return false
-// 	}
-// 	return true
-// }
+func DeleteUser(id uint) bool {
+	_, err := database.Db.Exec("DELETE FROM users WHERE id = $1", id)
+	if err != nil {
+		log.Println(err)
+		return false
+	}
+	return true
+}

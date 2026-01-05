@@ -116,32 +116,26 @@ func AddUser(c *gin.Context) {
 	c.JSON(http.StatusCreated, user)
 }
 
-// // Update User
-// func UpdateUser(c *gin.Context) {
-// 	var updateUser models.User
-// 	err := c.ShouldBindJSON(&updateUser)
-// 	if err != nil {
-// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-// 		return
-// 	}
-// 	user, err := services.UpdateUser(updateUser)
-// 	if err != nil {
-// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-// 		return
-// 	}
-// 	c.JSON(http.StatusCreated, user)
-// }
+// Update User
+func UpdateUser(c *gin.Context) {
+	var updateUser models.User
+	err := c.ShouldBindJSON(&updateUser)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	user, err := services.UpdateUser(updateUser)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, user)
+}
 
 // Delete User
 func DeleteUser(c *gin.Context) {
 	id := c.Param("id")
 	var user models.User
-	// err := database.Db.QueryRow("SELECT id, username, email, password_hash, first_name, lastname, bio, avatar_url, role, user_type, tier, is_active FROM users WHERE id = $1", id).
-	// 	Scan(&user.ID, &user.Username, &user.Email, &user.PasswordHash, &user.FirstName, &user.LastName, &user.Bio, &user.AvatarURL, &user.Role, &user.UserType, &user.IsActive)
-	// if err != nil {
-	// 	c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
-	// 	return
-	// }
 	_, err := database.Db.Exec("DELETE FROM users WHERE id = $1", id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -149,5 +143,3 @@ func DeleteUser(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"message": "User deleted", "user": user})
 }
-
-

@@ -12,3 +12,7 @@ type YogaFlow struct {
 }
 
 // Update PSQL (Table Created January 2nd, 2026)
+
+func PoseCount(arr []YogaPoses) int {
+	return len(arr)
+}

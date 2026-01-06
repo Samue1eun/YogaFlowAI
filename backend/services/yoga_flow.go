@@ -2,6 +2,7 @@ package services
 
 import (
 	"encoding/json"
+	"log"
 
 	"yogaflow.ai/models"
 	"yogaflow.ai/database"
@@ -9,6 +10,8 @@ import (
 
 // Need to work on the Schema Table prior to implementing user_flow_services
 
+
+// Create a YogaFlow
 func CreateYogaFlow (newYogaFlow models.YogaFlow) (models.YogaFlow, error) {
 	poseListJSON, err := json.Marshal(newYogaFlow.PoseList)
     if err != nil {
@@ -27,4 +30,32 @@ func CreateYogaFlow (newYogaFlow models.YogaFlow) (models.YogaFlow, error) {
 		newYogaFlow.AverageDifficulty,
 	).Scan(&newYogaFlow.ID)
 	return newYogaFlow, err
+}
+
+// Update Yoga Flow
+
+func UpdateYogaFlow(updatedYogaFlow models.YogaFlow) (models.YogaFlow, error) {
+	query := `UPDATE yoga_flows SET type=$1, time_length=$2, number_of_poses=$3, pose_list=$4, average_strength=$5, average_flexibility=$6, average_difficulty=$7 WHERE id=$8`
+	_, err := database.Db.Exec(
+		query,
+		updatedYogaFlow.Type,
+		updatedYogaFlow.TimeLength,
+		updatedYogaFlow.NumberOfPoses,
+		updatedYogaFlow.PoseList,
+		updatedYogaFlow.AverageStrength,
+		updatedYogaFlow.AverageFlexibility,
+		updatedYogaFlow.AverageDifficulty,
+	)
+	return updatedYogaFlow, err
+}
+
+// Delete Yoga Flow
+
+func DeleteYogaFlow(id uint) bool {
+	_, err := database.Db.Exec("DELETE FROM yoga_flows WHERE id = $1", id)
+	if err != nil {
+		log.Println(err)
+		return false
+	}
+	return true
 }

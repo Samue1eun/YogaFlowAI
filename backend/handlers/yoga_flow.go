@@ -67,3 +67,15 @@ func CreateYogaFlow (c *gin.Context) {
 	}
 	c.JSON(http.StatusCreated, yogaFlow)
 }
+
+// Delete Yoga Flow
+
+func DeleteYogaFlow(c *gin.Context) {
+	id := c.Param("id")
+	var yogaFlow models.YogaFlow
+	_, err := database.Db.Exec(`DELETE FROM yoga_flow WHERE id = $1`, id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"Error": err.Error()})
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Yoga Flow deleted", "Yoga Flow": yogaFlow})
+}

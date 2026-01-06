@@ -91,9 +91,17 @@ func AddBulkYogaPoses(c *gin.Context) {
 	query := `INSERT INTO yoga_poses (id, name, sanskrit, category, strength, flexibility, difficulty, level)
 				VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`
 	for _, pose := range addBulkYogaPoses {
-		_, err := database.Db.Exec(query,
-			pose.ID, pose.Name, pose.Sanskrit, pose.Category,
-			pose.Strength, pose.Flexibility, pose.Difficulty, pose.Level)
+		_, err := database.Db.Exec(
+			query,
+			pose.ID, 
+			pose.Name, 
+			pose.Sanskrit, 
+			pose.Category,
+			pose.Strength, 
+			pose.Flexibility, 
+			pose.Difficulty, 
+			pose.Level,
+		)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return

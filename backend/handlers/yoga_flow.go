@@ -141,3 +141,34 @@ func DeleteYogaFlow(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"message": "Yoga Flow deleted", "Yoga Flow": yogaFlow})
 }
+
+// Bulk Yoga Flow (Need to work on)
+
+func AddBulkYogaFlows (c *gin.Context) {
+	var addBulkYogaFlows []models.YogaFlow
+	err := c.ShouldBindBodyWithJSON(&addBulkYogaFlows)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	query := `INSERT INTO yoga_flows (id, type, time_length, number_of_poses, pose_list, average_strength, average_flexibility, average_difficulty)
+				VALUES ($1, $2, $3, $4, $5, $6, $7, %8)`
+	for _, flow := range addBulkYogaFlows {
+		_, err := database.Db.Exec(
+			query,
+			flow.ID,
+			flow.Type,
+			flow.TimeLength,
+			flow.PoseList,
+			flow.AverageStrength,
+			flow.AverageFlexibility,
+			flow.AverageDifficulty,
+		)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"status": "success"})
+	}
+}

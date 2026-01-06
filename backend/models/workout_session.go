@@ -14,4 +14,7 @@ type WorkoutSession struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
+// Will need to make a replacement for this model to make an array for the yoga flows to cater to the workout session demands.
+// The minimum for a yoga session should be 45 minutes
+
 // Update PSQL (Table Created January 2nd, 2026)

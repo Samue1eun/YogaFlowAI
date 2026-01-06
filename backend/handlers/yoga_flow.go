@@ -3,6 +3,8 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+	"database/sql"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 
@@ -52,14 +54,38 @@ func GetAllYogaFlows (c *gin.Context) {
 }
 
 func GetOneYogaFlow (c *gin.Context) {
-	id := c.Param("id")
+	idStr := c.Param("id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid id"})
+		return
+	}
+
 	var yogaFlow models.YogaFlow
-	err := database.Db.QueryRow(
-		"SELECT id, type, time_length, number_of_poses, pose_list, average_strength, average_flexibiltiy, average_difficulty FROM yoga_flows WHERE id = $1",
+	var poseListJSON []byte
+	err = database.Db.QueryRow(
+		"SELECT id, type, time_length, number_of_poses, pose_list, average_strength, average_flexibility, average_difficulty FROM yoga_flows WHERE id = $1",
 		id,
-	).Scan(&yogaFlow.ID, &yogaFlow.Type, &yogaFlow.TimeLength, &yogaFlow.NumberOfPoses, &yogaFlow.PoseList, &yogaFlow.AverageStrength, &yogaFlow.AverageFlexibility, &yogaFlow.AverageDifficulty)
+	).Scan(
+		&yogaFlow.ID, 
+		&yogaFlow.Type, 
+		&yogaFlow.TimeLength, 
+		&yogaFlow.NumberOfPoses, 
+		&poseListJSON, 
+		&yogaFlow.AverageStrength, 
+		&yogaFlow.AverageFlexibility, 
+		&yogaFlow.AverageDifficulty,
+	)
+	if err == sql.ErrNoRows {
+        c.JSON(http.StatusNotFound, gin.H{"error": "Yoga flow not found"})
+        return
+    }
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"Error": "Yoga flow not found"})
+		return
+	}
+	if err := json.Unmarshal(poseListJSON, &yogaFlow.PoseList); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 	c.JSON(http.StatusOK, yogaFlow)

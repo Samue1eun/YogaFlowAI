@@ -3,6 +3,7 @@ package services
 import (
 	"encoding/json"
 	"log"
+	"net/http"
 
 	"yogaflow.ai/models"
 	"yogaflow.ai/database"
@@ -12,6 +13,7 @@ import (
 
 
 // Create a YogaFlow
+
 func CreateYogaFlow (newYogaFlow models.YogaFlow) (models.YogaFlow, error) {
 	poseListJSON, err := json.Marshal(newYogaFlow.PoseList)
     if err != nil {
@@ -32,9 +34,23 @@ func CreateYogaFlow (newYogaFlow models.YogaFlow) (models.YogaFlow, error) {
 	return newYogaFlow, err
 }
 
+// Bulk Yoga Flow (Need to work on)
+
+// func AddBulkYogaFlows (c *gin.Context) {
+// 	var addBulkYogaFlows []models.YogaPoses
+// 	err := c.ShouldBindBodyWithJSON(&addBulkYogaFlows)
+// 	if err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+// 		return
+// 	}
+
+// 	query := `INSERT INTO yoga_flows (id, type, time_length, number_of_poses, pose_list, average_strength, average_flexibility, average_difficulty)
+// 				VALUES ($1, $2, $3, $4, $5, $6, $7, %8)`
+// }
+
 // Update Yoga Flow
 
-func UpdateYogaFlow(updatedYogaFlow models.YogaFlow) (models.YogaFlow, error) {
+func UpdateYogaFlow (updatedYogaFlow models.YogaFlow) (models.YogaFlow, error) {
 	poseListJSON, err := json.Marshal(updatedYogaFlow.PoseList)
     if err != nil {
         return updatedYogaFlow, err

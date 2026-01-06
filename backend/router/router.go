@@ -32,7 +32,7 @@ func PageRouter() {
 		v1.GET("/yoga_flow", handlers.GetAllYogaFlows)
 		v1.GET("/yoga_flow/:id", handlers.GetOneYogaFlow)
 		v1.POST("/yoga_flow", handlers.CreateYogaFlow)
-		v1.POST("/yoga_flow", handlers.AddBulkYogaFlows)
+		v1.POST("/yoga_flow/bulkadd", handlers.AddBulkYogaFlows)
 		v1.PUT("/yoga_flow/:id", handlers.UpdateYogaFlow)
 		v1.DELETE("/yoga_flow/:id", handlers.DeleteYogaFlow)
 		

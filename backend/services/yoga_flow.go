@@ -3,7 +3,6 @@ package services
 import (
 	"encoding/json"
 	"log"
-	"net/http"
 
 	"yogaflow.ai/models"
 	"yogaflow.ai/database"

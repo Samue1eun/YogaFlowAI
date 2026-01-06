@@ -73,7 +73,7 @@ func CreateYogaFlow (c *gin.Context) {
 func DeleteYogaFlow(c *gin.Context) {
 	id := c.Param("id")
 	var yogaFlow models.YogaFlow
-	_, err := database.Db.Exec(`DELETE FROM yoga_flow WHERE id = $1`, id)
+	_, err := database.Db.Exec(`DELETE FROM yoga_flows WHERE id = $1`, id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"Error": err.Error()})
 	}

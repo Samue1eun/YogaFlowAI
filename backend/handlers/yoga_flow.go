@@ -53,6 +53,7 @@ func GetAllYogaFlows (c *gin.Context) {
 
 
 // Add Yoga Flow
+
 func CreateYogaFlow (c *gin.Context) {
 	var newYogaFlows models.YogaFlow
 	err := c.ShouldBindJSON(&newYogaFlows)
@@ -61,6 +62,23 @@ func CreateYogaFlow (c *gin.Context) {
 		return
 	}
 	yogaFlow, err := services.CreateYogaFlow(newYogaFlows)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, yogaFlow)
+}
+
+// Update Yoga Flow
+
+func UpdateYogaFlow(c *gin.Context) {
+	var updateYogaFlow models.YogaFlow
+	err := c.ShouldBindJSON(&updateYogaFlow)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	yogaFlow, err := services.UpdateYogaFlow(updateYogaFlow)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

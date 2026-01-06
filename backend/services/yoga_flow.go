@@ -35,16 +35,21 @@ func CreateYogaFlow (newYogaFlow models.YogaFlow) (models.YogaFlow, error) {
 // Update Yoga Flow
 
 func UpdateYogaFlow(updatedYogaFlow models.YogaFlow) (models.YogaFlow, error) {
+	poseListJSON, err := json.Marshal(updatedYogaFlow.PoseList)
+    if err != nil {
+        return updatedYogaFlow, err
+    }
 	query := `UPDATE yoga_flows SET type=$1, time_length=$2, number_of_poses=$3, pose_list=$4, average_strength=$5, average_flexibility=$6, average_difficulty=$7 WHERE id=$8`
-	_, err := database.Db.Exec(
+	_, err = database.Db.Exec(
 		query,
 		updatedYogaFlow.Type,
 		updatedYogaFlow.TimeLength,
 		updatedYogaFlow.NumberOfPoses,
-		updatedYogaFlow.PoseList,
+		poseListJSON,
 		updatedYogaFlow.AverageStrength,
 		updatedYogaFlow.AverageFlexibility,
 		updatedYogaFlow.AverageDifficulty,
+		updatedYogaFlow.ID,
 	)
 	return updatedYogaFlow, err
 }

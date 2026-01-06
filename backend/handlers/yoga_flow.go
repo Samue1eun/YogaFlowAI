@@ -51,6 +51,24 @@ func GetAllYogaFlows (c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, yogaFlows)
 }
 
+func GetOneYogaFlow (c *gin.Context) {
+	id := c.Param("id")
+	var yogaFlow models.YogaFlow
+	err := database.Db.QueryRow(
+		"SELECT id, type, time_length, number_of_poses, pose_list, average_strength, average_flexibiltiy, average_difficulty FROM yoga_flows WHERE id = $1",
+		id,
+	).Scan(&yogaFlow.ID, &yogaFlow.Type, &yogaFlow.TimeLength, &yogaFlow.NumberOfPoses, &yogaFlow.PoseList, &yogaFlow.AverageStrength, &yogaFlow.AverageFlexibility, &yogaFlow.AverageDifficulty)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"Error": "Yoga flow not found"})
+		return
+	}
+	c.JSON(http.StatusOK, yogaFlow)
+	// declare a variable for the id
+	// Query for the id
+	// if statement if the id matches
+	// return the data in the id
+}
+
 
 // Add Yoga Flow
 

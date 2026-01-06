@@ -39,7 +39,7 @@ func GetOneYogaPose(c *gin.Context) {
 		id,
 	).Scan(&yogaPose.ID, &yogaPose.Name, &yogaPose.Sanskrit, &yogaPose.Category, &yogaPose.Strength, &yogaPose.Flexibility, &yogaPose.Difficulty, &yogaPose.Level)
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Yoga pose not found"})
+		c.JSON(http.StatusNotFound, gin.H{"Error": "Yoga pose not found"})
 		return
 	}
 	c.JSON(http.StatusOK, yogaPose)

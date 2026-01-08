@@ -1,1 +1,32 @@
 package services
+
+import (
+	"log"
+	"time"
+
+	"yogaflow.ai/database"
+	"yogaflow.ai/models"
+)
+
+func CreateUserProfile (newUserProfile models.UserProfile) (models.UserProfile, error) {
+	now := time.Now()
+	newUserProfile.CreatedAt = now
+	newUserProfile.UpdatedAt = now
+	// create two variables that marshalls the JSON data
+	// add a query variable that injects SQL data
+	// set err variable to call the database and user QueryRow
+
+	query := `INSERT INTO user_profile(id, user_id, fitness_level, strength_level, injuries, goals, created_at, updated_at)
+			VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7) RETURNING id`
+	err := database.Db.QueryRow(
+		query,
+		newUserProfile.UserID,
+		newUserProfile.FitnessLevel,
+		newUserProfile.StrengthLevel,
+		newUserProfile.Injuries,
+		newUserProfile.Goals,
+		now,
+		now,
+	).Scan(&newUserProfile.ID)
+	return newUserProfile, err
+}

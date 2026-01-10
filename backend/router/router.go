@@ -6,14 +6,13 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"yogaflow.ai/handlers"
-	// "yogaflow.ai/services"
 )
 
 func PageRouter() {
 	r := gin.Default()
 	v1 := r.Group("/v1")
 	{
-		// /user ROUTES
+		// user ROUTES
 		v1.GET("/users", handlers.GetAllUsers)
 		v1.GET("/users/adminaccess", handlers.GetAllUsersAdmin)
 		// v1.GET("/users/:id", handlers.GetOneUser)
@@ -21,14 +20,14 @@ func PageRouter() {
 		v1.PUT("/users/:id", handlers.UpdateUser)
 		v1.POST("/users", handlers.AddUser)
 
-		// /yoga_poses ROUTES
+		// yoga_poses ROUTES
 		v1.GET("/yoga_poses", handlers.GetAllYogaPoses)
 		v1.GET("/yoga_poses/:id", handlers.GetOneYogaPose)
 		v1.POST("/yoga_poses", handlers.AddYogaPose)
 		v1.POST("/yoga_poses/bulkadd", handlers.AddBulkYogaPoses)
 		v1.DELETE("/yoga_poses/:id", handlers.DeleteYogaPose)
 
-		// /yoga_flow ROUTES
+		// yoga_flow ROUTES
 		v1.GET("/yoga_flow", handlers.GetAllYogaFlows)
 		v1.GET("/yoga_flow/:id", handlers.GetOneYogaFlow)
 		v1.POST("/yoga_flow", handlers.CreateYogaFlow)
@@ -38,8 +37,26 @@ func PageRouter() {
 
 		// user_profiles ROUTES
 		v1.GET("/user_profile", handlers.GetAllUserProfiles)
-		v1.
+		// GET ONE User Profile
+		// UPDATE User Profile
+		v1.POST("/user_profile", handlers.CreateUserProfile)
+		v1.DELETE("/user_profile/:id", handlers.DeleteUserProfile)
+
+		// pose_performance ROUTES
+		// Note: pose performance is based off of how many reps that a user gets on each pose off of the completed workout. The update feature will be the most important part of this feature.
 		
+		// workout_session ROUTES
+		// Note: workout sessions will be created and updated once the user completes a workout session
+		
+		// user_progress ROUTES
+		// Note: user progress will be updated based off of averages that the user will need to get from completed flows.
+
+		// user_favorites ROUTES
+		
+
+
+
+		// user_flow ROUTES
 	}
 
 	r.Run(":8081")

@@ -28,6 +28,7 @@ func GetAllUserProfiles(c *gin.Context) {
 			&userProfile.UserID,
 			&userProfile.FitnessLevel,
 			&userProfile.StrengthLevel,
+			&userProfile.FlexibilityLevel,
 			&injuriesListJSON,
 			&goalsListJSON,
 		)
@@ -45,8 +46,9 @@ func GetAllUserProfiles(c *gin.Context) {
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		}
-	userProfiles = append(userProfiles, userProfile)
+		userProfiles = append(userProfiles, userProfile)
 	}
+	c.IndentedJSON(http.StatusOK, userProfiles)
 }
 
 func CreateUserProfile(c *gin.Context) {
@@ -62,4 +64,15 @@ func CreateUserProfile(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusCreated, userProfile)
+}
+
+func DeleteUserProfile(c *gin.Context) {
+	id := c.Param("id")
+	var userProfile models.UserProfile
+	_, err := database.Db.Exec("DELETE FROM user_profile WHERE id = $1", id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Profile deleted", "user profile": userProfile})
 }

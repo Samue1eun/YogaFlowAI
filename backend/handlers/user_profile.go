@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"yogaflow.ai/database"
 	"yogaflow.ai/models"
+	"yogaflow.ai/services"
 )
 
 func GetAllUserProfiles(c *gin.Context) {
@@ -40,7 +41,25 @@ func GetAllUserProfiles(c *gin.Context) {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
-		err = json.Unmarshal(goalsListJSON, &userProfile.)
-
+		err = json.Unmarshal(goalsListJSON, &userProfile.Goals)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		}
+	userProfiles = append(userProfiles, userProfile)
 	}
+}
+
+func CreateUserProfile(c *gin.Context) {
+	var newUserProfile models.UserProfile
+	err := c.ShouldBindJSON(&newUserProfile)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	userProfile, err := services.CreateUserProfile(newUserProfile)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, userProfile)
 }

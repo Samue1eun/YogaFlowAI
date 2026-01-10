@@ -35,6 +35,10 @@ func PageRouter() {
 		v1.POST("/yoga_flow/bulkadd", handlers.AddBulkYogaFlows)
 		v1.PUT("/yoga_flow/:id", handlers.UpdateYogaFlow)
 		v1.DELETE("/yoga_flow/:id", handlers.DeleteYogaFlow)
+
+		// user_profiles ROUTES
+		v1.GET("/user_profile", handlers.GetAllUserProfiles)
+		v1.
 		
 	}
 

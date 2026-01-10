@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"encoding/json"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -8,9 +9,8 @@ import (
 	"yogaflow.ai/models"
 )
 
-func GetAllUserProfiles (c *gin.Context) {
+func GetAllUserProfiles(c *gin.Context) {
 	var userProfiles []models.UserProfile
-	// Add in model
 	rows, err := database.Db.Query("SELECT id, user_id, fitness_level, flexibility_level, strength_level, injuries, goals FROM user_profile")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -19,24 +19,28 @@ func GetAllUserProfiles (c *gin.Context) {
 	defer rows.Close()
 
 	for rows.Next() {
-		var userProfiles models.YogaFlow
+		var userProfile models.UserProfile
 		var injuriesListJSON []byte
 		var goalsListJSON []byte
-		// Take a look at the model
 		err := rows.Scan(
-			&userProfiles.ID,
-			&userProfiles.UserID,
-			&userProfiles.FitnessLevel,
-			&userProfiles.StrengthLevel,
+			&userProfile.ID,
+			&userProfile.UserID,
+			&userProfile.FitnessLevel,
+			&userProfile.StrengthLevel,
 			&injuriesListJSON,
 			&goalsListJSON,
 		)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-	// Unmarshal JSON bytes into []Injuries and []Goal
-	
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		// Unmarshal JSON bytes into []Injuries and []Goal
+		err = json.Unmarshal(injuriesListJSON, &userProfile.Injuries)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		err = json.Unmarshal(goalsListJSON, &userProfile.)
 
 	}
 }

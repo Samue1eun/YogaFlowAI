@@ -44,7 +44,15 @@ func PageRouter() {
 
 		// pose_performance ROUTES
 		// Note: pose performance is based off of how many reps that a user gets on each pose off of the completed workout. The update feature will be the most important part of this feature.
-		
+		// GET ONE Pose Performance Data
+		// UPDATE Pose Performance
+
+		// NEED TO TEST END POINTS!
+		v1.GET("/pose_performance", handlers.GetAllPosePerformances)
+		v1.POST("/pose_performance", handlers.CreatePosePerformance)
+		v1.DELETE("/pose_performance", handlers.DeletePosePerformance)
+
+
 		// workout_session ROUTES
 		// Note: workout sessions will be created and updated once the user completes a workout session
 		

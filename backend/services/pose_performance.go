@@ -2,10 +2,13 @@ package services
 
 import (
 	"log"
+	// "net/http"
 
 	"yogaflow.ai/database"
 	"yogaflow.ai/models"
 )
+
+
 
 func CreatePosePerformance(newPosePerformance models.PosePerformance) (models.PosePerformance, error) {
 	
@@ -24,13 +27,13 @@ func CreatePosePerformance(newPosePerformance models.PosePerformance) (models.Po
 	return newPosePerformance, err
 }
 
-// Udpate Pose Performance
+// Update Pose Performance
 
 func UpdatePosePerformance () {
 
 }
 
-func DeletePosePosePerformance (id uint) bool {
+func DeletePosePerformance (id uint) bool {
 	_, err := database.Db.Exec("DELETE FROM pose_performance WHERE id = $1", id)
 	if err != nil {
 		log.Println(err)

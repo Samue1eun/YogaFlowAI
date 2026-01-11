@@ -1,3 +1,38 @@
 package services
 
-impor
+import (
+	"time"
+	"log"
+
+	"yogaflow.ai/models"
+	"yogaflow.ai/database"
+)
+
+func CreateWorkoutSession(newWorkoutSession models.WorkoutSession) (models.WorkoutSession, error) {
+	now := time.Now()
+	newWorkoutSession.CreatedAt = now
+	query := `INSERT INTO workout_session(id, user_id, yoga_flow_id, started_at, completed_at, duration, rating, feedback, created_at)
+			VALUES (DEFAULT, $1, $2, $3 ,$4, $5, $6, $7, $8) RETURNING id`
+	err := database.Db.QueryRow(
+		query,
+		newWorkoutSession.ID,
+		newWorkoutSession.UserID,
+		newWorkoutSession.YogaFlowID,
+		newWorkoutSession.StartedAt,
+		newWorkoutSession.CompletedAt,
+		newWorkoutSession.Duration,
+		newWorkoutSession.Rating,
+		newWorkoutSession.Feedback,
+		now,
+	).Scan(&newWorkoutSession.ID)
+	return newWorkoutSession, err
+}
+
+func DeleteWorkoutSession (id uint) bool {
+	_, err := database.Db.Exec("DELETE FROM workout_session WHERE id = $1", id)
+	if err != nil {
+		log.Println(err)
+		return false
+	}
+	return true
+}

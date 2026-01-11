@@ -42,6 +42,10 @@ func CreateUserProfile (newUserProfile models.UserProfile) (models.UserProfile, 
 
 // Update User Profile
 
+func UpdateUserProfile () {
+	
+}
+
 func DeleteUserProfile (id uint) bool {
 	_, err := database.Db.Exec("DELETE FROM user_profile WHERE id = $1", id)
 	if err != nil {

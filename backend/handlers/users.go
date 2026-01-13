@@ -26,7 +26,19 @@ func GetAllUsers(c *gin.Context) {
 
 	for rows.Next() {
 		var user models.User
-		err := rows.Scan(&user.ID, &user.Username, &user.Email, &user.FirstName, &user.LastName, &user.Bio, &user.AvatarURL, &user.Role, &user.UserType, &user.Tier, &user.IsActive)
+		err := rows.Scan(
+			&user.ID, 
+			&user.Username, 
+			&user.Email, 
+			&user.FirstName, 
+			&user.LastName, 
+			&user.Bio, 
+			&user.AvatarURL, 
+			&user.Role, 
+			&user.UserType, 
+			&user.Tier, 
+			&user.IsActive
+		)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return

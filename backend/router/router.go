@@ -47,23 +47,23 @@ func PageRouter() {
 		// GET ONE Pose Performance Data
 		// UPDATE Pose Performance
 
-		// NEED TO TEST END POINTS!
+		// NEED TO TEST THIS END POINT
 		v1.GET("/pose_performance", handlers.GetAllPosePerformances)
 		v1.POST("/pose_performance", handlers.CreatePosePerformance)
 		v1.DELETE("/pose_performance", handlers.DeletePosePerformance)
 
-
+		// NEED TO TEST THIS END POINT
 		// workout_session ROUTES
 		// Note: workout sessions will be created and updated once the user completes a workout session
+		v1.GET("/workout_session", handlers.GetAllWorkoutSession)
+		v1.POST("/workout_session", handlers.CreateWorkoutSession)
+		v1.DELETE("/workout_session", handlers.DeleteWorkoutSession)
 		
 		// user_progress ROUTES
 		// Note: user progress will be updated based off of averages that the user will need to get from completed flows.
 
 		// user_favorites ROUTES
 		
-
-
-
 		// user_flow ROUTES
 	}
 

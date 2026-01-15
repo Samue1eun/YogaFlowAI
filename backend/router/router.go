@@ -37,19 +37,17 @@ func PageRouter() {
 
 		// user_profiles ROUTES
 		v1.GET("/user_profile", handlers.GetAllUserProfiles)
-		// GET ONE User Profile
-		// UPDATE User Profile
+		v1.GET("/user_profile/:id", handlers.GetOneUserProfile)
+		v1.PUT("/user_profile/:id", handlers.UpdateUserProfile) // NEED TO TEST
 		v1.POST("/user_profile", handlers.CreateUserProfile)
 		v1.DELETE("/user_profile/:id", handlers.DeleteUserProfile)
 
 		// pose_performance ROUTES
 		// Note: pose performance is based off of how many reps that a user gets on each pose off of the completed workout. The update feature will be the most important part of this feature.
-		// GET ONE Pose Performance Data
-		// UPDATE Pose Performance
 
 		// NEED TO TEST THIS END POINT
 		v1.GET("/pose_performance", handlers.GetAllPosePerformances)
-		// GET ONE POSE PERFORMANCE FOR A USER
+		v1.GET("/pose_performance/:id", handlers.GetOnePosePerformance)
 		v1.POST("/pose_performance", handlers.CreatePosePerformance)
 		v1.DELETE("/pose_performance", handlers.DeletePosePerformance)
 
@@ -57,6 +55,8 @@ func PageRouter() {
 		// workout_session ROUTES
 		// Note: workout sessions will be created and updated once the user completes a workout session
 		v1.GET("/workout_session", handlers.GetAllWorkoutSession)
+		// GET ONE WORKOUT SESSION
+		// UPDATE WORKOUT SESSION
 		v1.POST("/workout_session", handlers.CreateWorkoutSession)
 		v1.DELETE("/workout_session", handlers.DeleteWorkoutSession)
 
@@ -77,6 +77,7 @@ func PageRouter() {
 		v1.DELETE("/user_favorites/:id", handlers.DeleteUserFavorite)
 
 		// user_flow ROUTES
+		
 	}
 
 	r.Run(":8081")

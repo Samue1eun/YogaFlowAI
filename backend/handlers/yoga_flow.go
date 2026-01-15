@@ -60,7 +60,6 @@ func GetOneYogaFlow (c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid id"})
 		return
 	}
-
 	var yogaFlow models.YogaFlow
 	var poseListJSON []byte
 	err = database.Db.QueryRow(

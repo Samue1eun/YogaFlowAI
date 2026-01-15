@@ -38,8 +38,29 @@ func CreateUserProfile (newUserProfile models.UserProfile) (models.UserProfile, 
 
 // Update User Profile
 
-func UpdateUserProfile () {
-	
+func UpdateUserProfile (updatedUserProfile models.UserProfile) (models.UserProfile, error) {
+	now := time.Now()
+	updatedUserProfile.UpdatedAt = now
+	injuriesListJSON, err := json.Marshal(updatedUserProfile.Injuries)
+	if err != nil {
+		return updatedUserProfile, err
+	}
+	goalsListJSON, err := json.Marshal(updatedUserProfile.Goals)
+	if err != nil {
+		return updatedUserProfile, err
+	}
+	query := `UPDATE user_profile SET fitness_level=$1, flexibility_level=$2, strength_level=$3, injuries=$4, goals=$5, updated_at=$6 WHERE id=$7`
+	_, err = database.Db.Exec(
+		query,
+		updatedUserProfile.FitnessLevel,
+		updatedUserProfile.FlexibilityLevel,
+		updatedUserProfile.StrengthLevel,
+		injuriesListJSON,
+		goalsListJSON,
+		now,
+		updatedUserProfile.ID,
+	)
+	return updatedUserProfile, err
 }
 
 func DeleteUserProfile (id uint) bool {

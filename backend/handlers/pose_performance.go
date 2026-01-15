@@ -2,6 +2,8 @@ package handlers
 
 import (
 	"net/http"
+	"database/sql"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"yogaflow.ai/database"
@@ -38,8 +40,37 @@ func GetAllPosePerformances(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, posePerformances)
 }
 
-func GetOnePosePerformance(c *gin.Context)
-	idStr :=c.Param
+func GetOnePosePerformance(c *gin.Context) {
+	idStr :=c.Param("id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid id"})
+		return
+	}
+
+	var posePerformance models.PosePerformance
+	err = database.Db.QueryRow(
+		"SELECT id, user_id, pose_id, attempts, success_rate, difficulty_rating, last_attempted FROM pose_performance WHERE id = $1",
+		id,
+	).Scan(
+		&posePerformance.ID,
+		&posePerformance.UserID,
+		&posePerformance.PoseID,
+		&posePerformance.Attempts,
+		&posePerformance.SuccessRate,
+		&posePerformance.DifficultyRating,
+		&posePerformance.LastAttempted,
+	)
+	if err == sql.ErrNoRows {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Pose performance not found"})
+		return
+	}
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Pose performance not found"})
+		return
+	}
+	c.JSON(http.StatusOK, posePerformance)
+}
 
 func CreatePosePerformance(c *gin.Context) {
 	var newPosePerformance models.PosePerformance
@@ -54,7 +85,6 @@ func CreatePosePerformance(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusCreated, userPosePerformance)
-
 }
 
 func DeletePosePerformance(c *gin.Context) {

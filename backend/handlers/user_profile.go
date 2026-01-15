@@ -45,6 +45,7 @@ func GetAllUserProfiles(c *gin.Context) {
 		err = json.Unmarshal(goalsListJSON, &userProfile.Goals)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
 		}
 		userProfiles = append(userProfiles, userProfile)
 	}

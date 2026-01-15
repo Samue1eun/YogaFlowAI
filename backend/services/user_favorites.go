@@ -34,8 +34,6 @@ func CreateUserFavorite(newUserFavorite models.UserFavorites) (models.UserFavori
 	return newUserFavorite, err
 }
 
-
-
 func DeleteUserFavorite(id uint) bool {
 	_, err := database.Db.Exec("DELETE FROM user_id WHERE id=$1", id)
 	if err != nil {

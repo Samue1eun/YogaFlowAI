@@ -49,6 +49,7 @@ func PageRouter() {
 
 		// NEED TO TEST THIS END POINT
 		v1.GET("/pose_performance", handlers.GetAllPosePerformances)
+		// GET ONE POSE PERFORMANCE FOR A USER
 		v1.POST("/pose_performance", handlers.CreatePosePerformance)
 		v1.DELETE("/pose_performance", handlers.DeletePosePerformance)
 
@@ -63,6 +64,11 @@ func PageRouter() {
 		// Note: user progress will be updated based off of averages that the user will need to get from completed flows.
 
 		// user_favorites ROUTES
+		// NEED TO TEST
+		v1.GET("/user_favorites", handlers.GetAllUserFavorites)
+		v1.PUT("/user_favorites/:id", handlers.UpdateUserFavorite)
+		v1.POST("/user_favorites/", handlers.CreateUserFavorite)
+		v1.DELETE("/user_favorites/", handlers.DeleteUserFavorite)
 		
 		// user_flow ROUTES
 	}

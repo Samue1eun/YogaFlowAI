@@ -8,9 +8,6 @@ import (
 	"yogaflow.ai/database"
 )
 
-// Need to work on the Schema Table prior to implementing user_flow_services
-
-
 // Create a YogaFlow
 
 func CreateYogaFlow (newYogaFlow models.YogaFlow) (models.YogaFlow, error) {

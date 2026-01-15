@@ -38,6 +38,9 @@ func GetAllPosePerformances(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, posePerformances)
 }
 
+func GetOnePosePerformance(c *gin.Context)
+	idStr :=c.Param
+
 func CreatePosePerformance(c *gin.Context) {
 	var newPosePerformance models.PosePerformance
 	err := c.ShouldBindJSON(&newPosePerformance)

@@ -80,15 +80,15 @@ func GetOneUserProfile(c *gin.Context) {
         c.JSON(http.StatusNotFound, gin.H{"error": "User profile not found"})
         return
     }
-	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"Error": "User profile not found"})
-		return
+		if err != nil {
+			c.JSON(http.StatusNotFound, gin.H{"error": "User profile not found"})
+			return
 	}
 		if err := json.Unmarshal(injuries, &userProfile.Injuries); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 	}
-			if err := json.Unmarshal(goals, &userProfile.Goals); err != nil {
+		if err := json.Unmarshal(goals, &userProfile.Goals); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 	}

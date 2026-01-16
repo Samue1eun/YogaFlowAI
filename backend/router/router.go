@@ -76,8 +76,11 @@ func PageRouter() {
 		v1.POST("/user_favorites/", handlers.CreateUserFavorite)
 		v1.DELETE("/user_favorites/:id", handlers.DeleteUserFavorite)
 
-		// user_flow ROUTES
+		// user_flows ROUTES
+		// User flows do not need an update feature since a user will need a new
+		// NEED TO TEST
 		
+
 	}
 
 	r.Run(":8081")

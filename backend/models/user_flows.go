@@ -6,7 +6,7 @@ import (
 
 type UserFlows struct {
 	ID string `json:"id"`
-	UsedID int `json:"user_id"`
+	UserID int `json:"user_id"`
 	YogaFlowID string `json:"yoga_flow_id"`
 	CreatedAt time.Time `json:"created_at"`
 }

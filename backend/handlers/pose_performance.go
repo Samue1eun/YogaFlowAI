@@ -72,6 +72,10 @@ func GetOnePosePerformance(c *gin.Context) {
 	c.JSON(http.StatusOK, posePerformance)
 }
 
+func UpdatePosePerformance(c* gin.Context) {
+	
+}
+
 func CreatePosePerformance(c *gin.Context) {
 	var newPosePerformance models.PosePerformance
 	err := c.ShouldBindJSON(&newPosePerformance)

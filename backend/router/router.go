@@ -79,8 +79,10 @@ func PageRouter() {
 		// user_flows ROUTES
 		// User flows do not need an update feature since a user will need a new
 		// NEED TO TEST
-		
-
+		v1.GET("/user_flows", handlers.GetAllUserFlows)
+		v1.GET("/user_flows/:id", handlers.GetOneUserFlow)
+		v1.POST("/user_flows", handlers.CreateUserFlow)
+		v1.DELETE("/user_flows", handlers.DeleteUserFlow)
 	}
 
 	r.Run(":8081")

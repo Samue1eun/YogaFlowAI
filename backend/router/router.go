@@ -48,6 +48,7 @@ func PageRouter() {
 		// NEED TO TEST THIS END POINT
 		v1.GET("/pose_performance", handlers.GetAllPosePerformances)
 		v1.GET("/pose_performance/:id", handlers.GetOnePosePerformance)
+		v1.PUT("/pose_performance/:id", handlers.UpdatePosePerformance)
 		v1.POST("/pose_performance", handlers.CreatePosePerformance)
 		v1.DELETE("/pose_performance", handlers.DeletePosePerformance)
 

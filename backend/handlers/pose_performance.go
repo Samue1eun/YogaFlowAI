@@ -73,7 +73,7 @@ func GetOnePosePerformance(c *gin.Context) {
 }
 
 func UpdatePosePerformance(c* gin.Context) {
-	var updatePosePerformance models.User
+	var updatePosePerformance models.PosePerformance
 	err := c.ShouldBindJSON(&updatePosePerformance)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

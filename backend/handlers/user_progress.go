@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"encoding/json"
+	// "encoding/json"
 	"net/http"
 	"database/sql"
 	"strconv"
@@ -60,7 +60,7 @@ func GetOneUserProgress (c *gin.Context) {
 		&userProgress.StrengthImprovement,
 		&userProgress.FlexibilityImprovement,
 		&userProgress.SessionsCompleted,
-		&userProgress.TotalTime
+		&userProgress.TotalTime,
 	)
 	if err == sql.ErrNoRows {
 		c.JSON(http.StatusNotFound, gin.H{"error": "User progress not found"})
@@ -74,13 +74,13 @@ func GetOneUserProgress (c *gin.Context) {
 }
 
 func CreateUserProgress (c* gin.Context) {
-	var newUserProgress
+	var newUserProgress models.UserProgress
 	err := c.ShouldBind(&newUserProgress)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	newUserProgress, err := services.CreateUserProgress(newUserProgress)
+	newUserProgress, err = services.CreateUserProgress(newUserProgress)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -89,13 +89,13 @@ func CreateUserProgress (c* gin.Context) {
 }
 
 func UpdateUserProgress(c *gin.Context) {
-	var updateUserProgress
+	var updateUserProgress models.UserProgress
 	err := c.ShouldBindJSON(&updateUserProgress)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	updateUserProgress, err := services.UpdateUserProgress(updateUserProgress)
+	updateUserProgress, err = services.UpdateUserProgress(updateUserProgress)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

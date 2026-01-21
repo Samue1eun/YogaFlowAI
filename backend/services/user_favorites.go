@@ -22,7 +22,7 @@ func CreateUserFavorite(newUserFavorite models.UserFavorites) (models.UserFavori
 		return newUserFavorite, err
 	}
 	query := `INSERT INTO user_favorites (id, user_id, favorite_poses, favorite_flows, created_at, updated_at)
-			VALUES (DEFAULT, $1, $2, $3, $4, $5)`
+		VALUES (DEFAULT, $1, $2, $3, $4, $5) RETURNING id`
 	err = database.Db.QueryRow(
 		query,
 		newUserFavorite.UserID,

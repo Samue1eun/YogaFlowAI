@@ -58,29 +58,27 @@ func PageRouter() {
 		v1.POST("/workout_session", handlers.CreateWorkoutSession)
 		v1.DELETE("/workout_session/:id", handlers.DeleteWorkoutSession)
 
-		// user_progress ROUTES
+		// user_progress ROUTES (all endpoints satisfied)
 		// Note: user progress will be updated based off of averages that the user will need to get from completed flows.
-		// NEED TO TEST
 		v1.GET("/user_progress", handlers.GetAllUserProgress)
 		v1.GET("/user_progress/:id", handlers.GetOneUserProgress)
 		v1.POST("/user_progress", handlers.CreateUserProgress)
 		v1.PUT("/user_progress/:id", handlers.UpdateUserProgress)
 		v1.DELETE("/user_progress/:id", handlers.DeleteUserProgress)
 
-		// user_favorites ROUTES
-		// NEED TO TEST
+		// user_favorites ROUTES (all endpoints satisfied)
 		v1.GET("/user_favorites", handlers.GetAllUserFavorites)
 		v1.PUT("/user_favorites/:id", handlers.UpdateUserFavorite)
 		v1.POST("/user_favorites/", handlers.CreateUserFavorite)
 		v1.DELETE("/user_favorites/:id", handlers.DeleteUserFavorite)
 
 		// user_flows ROUTES
-		// User flows do not need an update feature since a user will need a new
+		// User flows do not need an update feature since a user will have a new flow created each time
 		// NEED TO TEST
 		v1.GET("/user_flows", handlers.GetAllUserFlows)
 		v1.GET("/user_flows/:id", handlers.GetOneUserFlow)
 		v1.POST("/user_flows", handlers.CreateUserFlow)
-		v1.DELETE("/user_flows", handlers.DeleteUserFlow)
+		v1.DELETE("/user_flows/:id", handlers.DeleteUserFlow)
 	}
 
 	r.Run(":8081")

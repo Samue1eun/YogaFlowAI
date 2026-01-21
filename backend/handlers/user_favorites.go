@@ -12,7 +12,7 @@ import (
 
 func GetAllUserFavorites(c *gin.Context) {
 	var userFavorites []models.UserFavorites
-	rows, err := database.Db.Query("SELECT id, user_id, favorite_poses, favorite_flows, created_at, updated_at")
+	rows, err := database.Db.Query("SELECT id, user_id, favorite_poses, favorite_flows, created_at, updated_at FROM user_favorites")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -28,6 +28,8 @@ func GetAllUserFavorites(c *gin.Context) {
 			&userFavorite.UserID,
 			&favoritePosesJSON,
 			&favoriteFlowsJSON,
+			&userFavorite.CreatedAt,
+			&userFavorite.UpdatedAt,
 		)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

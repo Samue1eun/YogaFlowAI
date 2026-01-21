@@ -12,10 +12,9 @@ func CreateUserProgress(newUserProgress models.UserProgress) (models.UserProgres
 	now := time.Now()
 	newUserProgress.Date = now
 	query := `INSERT INTO user_progress (id, user_id, date, strength_improvement, flexibility_improvement, sessions_completed, total_time)
-			VALUES (DEFAULT, $1, $2, $3, $4, $5, $6)`
+		VALUES (DEFAULT, $1, $2, $3, $4, $5, $6) RETURNING id`
 	err := database.Db.QueryRow(
 		query,
-		newUserProgress.ID,
 		newUserProgress.UserID,
 		now,
 		newUserProgress.StrengthImprovement,

@@ -12,8 +12,8 @@ import (
 func CreateUserFlow(newFlow models.UserFlows) (models.UserFlows, error) {
 	now := time.Now()
 	newFlow.CreatedAt = now
-	query := `INSERT INTO user_flows (user_id, yoga_flow_id, created_at)
-			VALUES ($1, $2, $3) RETURNING id`
+	query := `INSERT INTO user_flows (id, user_id, yoga_flow_id, created_at)
+			VALUES ($1, $2, $3, $4) RETURNING id`
 	err := database.Db.QueryRow(
 		query,
 		newFlow.ID,

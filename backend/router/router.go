@@ -12,7 +12,7 @@ func PageRouter() {
 	r := gin.Default()
 	v1 := r.Group("/v1")
 	{
-		// user ROUTES
+		// user ROUTES (all endpoints satisfied)
 		v1.GET("/users", handlers.GetAllUsers)
 		v1.GET("/users/adminaccess", handlers.GetAllUsersAdmin)
 		// v1.GET("/users/:id", handlers.GetOneUser)
@@ -20,14 +20,14 @@ func PageRouter() {
 		v1.PUT("/users/:id", handlers.UpdateUser)
 		v1.POST("/users", handlers.AddUser)
 
-		// yoga_poses ROUTES
+		// yoga_poses ROUTES (all endpoints satisfied)
 		v1.GET("/yoga_poses", handlers.GetAllYogaPoses)
 		v1.GET("/yoga_poses/:id", handlers.GetOneYogaPose)
 		v1.POST("/yoga_poses", handlers.AddYogaPose)
 		v1.POST("/yoga_poses/bulkadd", handlers.AddBulkYogaPoses)
 		v1.DELETE("/yoga_poses/:id", handlers.DeleteYogaPose)
 
-		// yoga_flow ROUTES
+		// yoga_flow ROUTES (all endpoints satisfied)
 		v1.GET("/yoga_flow", handlers.GetAllYogaFlows)
 		v1.GET("/yoga_flow/:id", handlers.GetOneYogaFlow)
 		v1.POST("/yoga_flow", handlers.CreateYogaFlow)
@@ -42,17 +42,15 @@ func PageRouter() {
 		v1.POST("/user_profile", handlers.CreateUserProfile)
 		v1.DELETE("/user_profile/:id", handlers.DeleteUserProfile)
 
-		// pose_performance ROUTES
+		// pose_performance ROUTES (all endpoints satisfied)
 		// Note: pose performance is based off of how many reps that a user gets on each pose off of the completed workout. The update feature will be the most important part of this feature.
-
-		// NEED TO TEST THIS END POINT
 		v1.GET("/pose_performance", handlers.GetAllPosePerformances)
 		v1.GET("/pose_performance/:id", handlers.GetOnePosePerformance)
 		v1.PUT("/pose_performance/:id", handlers.UpdatePosePerformance)
 		v1.POST("/pose_performance", handlers.CreatePosePerformance)
-		v1.DELETE("/pose_performance", handlers.DeletePosePerformance)
+		v1.DELETE("/pose_performance/:id", handlers.DeletePosePerformance)
 
-		// workout_session ROUTES (All end points tested successfully)
+		// workout_session ROUTES (all endpoints satisfied)
 		// Note: workout sessions will be created and updated once the user completes a workout session
 		v1.GET("/workout_session", handlers.GetAllWorkoutSession)
 		// GET ONE WORKOUT SESSION
@@ -63,7 +61,7 @@ func PageRouter() {
 		// user_progress ROUTES
 		// Note: user progress will be updated based off of averages that the user will need to get from completed flows.
 		// NEED TO TEST
-		v1.GET("/user_progress", handlers.GetAllWorkoutSession)
+		v1.GET("/user_progress", handlers.GetAllUserProgress)
 		v1.GET("/user_progress/:id", handlers.GetOneUserProgress)
 		v1.POST("/user_progress", handlers.CreateUserProgress)
 		v1.PUT("/user_progress/:id", handlers.UpdateUserProgress)

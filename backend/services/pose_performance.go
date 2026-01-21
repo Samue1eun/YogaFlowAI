@@ -2,7 +2,6 @@ package services
 
 import (
 	"log"
-	// "net/http"
 
 	"yogaflow.ai/database"
 	"yogaflow.ai/models"
@@ -13,7 +12,7 @@ import (
 func CreatePosePerformance(newPosePerformance models.PosePerformance) (models.PosePerformance, error) {
 	
 	query := `INSERT INTO pose_performance(id, user_id, pose_id, attempts, success_rate, difficulty_rating, last_attempted)
-			VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7) RETURNING id`
+			VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`
 	err := database.Db.QueryRow(
 		query,
 		newPosePerformance.ID,
@@ -30,7 +29,7 @@ func CreatePosePerformance(newPosePerformance models.PosePerformance) (models.Po
 // Update Pose Performance
 
 func UpdatePosePerformance (updatePosePerformance models.PosePerformance) (models.PosePerformance, error) {
-	query := `UPDATE pose_performance SET user_id=$1, pose_id=$2, attempts=$3, success_rate=$4, difficulty_rating=$5, last_attempted=$6 WHERE id=$7)`
+	query := `UPDATE pose_performance SET user_id=$1, pose_id=$2, attempts=$3, success_rate=$4, difficulty_rating=$5, last_attempted=$6 WHERE id=$7`
 	_, err := database.Db.Exec(
 		query,
 		updatePosePerformance.UserID,

@@ -35,10 +35,10 @@ func PageRouter() {
 		v1.PUT("/yoga_flow/:id", handlers.UpdateYogaFlow)
 		v1.DELETE("/yoga_flow/:id", handlers.DeleteYogaFlow)
 
-		// user_profiles ROUTES
+		// user_profiles ROUTES (all endpoints satisfied)
 		v1.GET("/user_profile", handlers.GetAllUserProfiles)
 		v1.GET("/user_profile/:id", handlers.GetOneUserProfile)
-		v1.PUT("/user_profile/:id", handlers.UpdateUserProfile) // NEED TO TEST
+		v1.PUT("/user_profile/:id", handlers.UpdateUserProfile)
 		v1.POST("/user_profile", handlers.CreateUserProfile)
 		v1.DELETE("/user_profile/:id", handlers.DeleteUserProfile)
 
@@ -52,14 +52,13 @@ func PageRouter() {
 		v1.POST("/pose_performance", handlers.CreatePosePerformance)
 		v1.DELETE("/pose_performance", handlers.DeletePosePerformance)
 
-		// NEED TO TEST THIS END POINT
-		// workout_session ROUTES
+		// workout_session ROUTES (All end points tested successfully)
 		// Note: workout sessions will be created and updated once the user completes a workout session
 		v1.GET("/workout_session", handlers.GetAllWorkoutSession)
 		// GET ONE WORKOUT SESSION
 		// UPDATE WORKOUT SESSION
 		v1.POST("/workout_session", handlers.CreateWorkoutSession)
-		v1.DELETE("/workout_session", handlers.DeleteWorkoutSession)
+		v1.DELETE("/workout_session/:id", handlers.DeleteWorkoutSession)
 
 		// user_progress ROUTES
 		// Note: user progress will be updated based off of averages that the user will need to get from completed flows.

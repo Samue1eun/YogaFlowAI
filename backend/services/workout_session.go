@@ -12,7 +12,7 @@ func CreateWorkoutSession(newWorkoutSession models.WorkoutSession) (models.Worko
 	now := time.Now()
 	newWorkoutSession.CreatedAt = now
 	query := `INSERT INTO workout_session(id, user_id, yoga_flow_id, started_at, completed_at, duration, rating, feedback, created_at)
-			VALUES (DEFAULT, $1, $2, $3 ,$4, $5, $6, $7, $8) RETURNING id`
+			VALUES ($1, $2, $3 ,$4, $5, $6, $7, $8, $9) RETURNING id`
 	err := database.Db.QueryRow(
 		query,
 		newWorkoutSession.ID,
@@ -27,6 +27,8 @@ func CreateWorkoutSession(newWorkoutSession models.WorkoutSession) (models.Worko
 	).Scan(&newWorkoutSession.ID)
 	return newWorkoutSession, err
 }
+
+// NEED TO CREATE AN UPDATE FOR THE WORKOUT SESSION? FOR EVERYTIME A USER COMPLETES IT?
 
 func DeleteWorkoutSession (id uint) bool {
 	_, err := database.Db.Exec("DELETE FROM workout_session WHERE id = $1", id)

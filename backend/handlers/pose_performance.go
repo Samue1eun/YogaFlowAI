@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"net/http"
 	"database/sql"
+	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -41,7 +41,7 @@ func GetAllPosePerformances(c *gin.Context) {
 }
 
 func GetOnePosePerformance(c *gin.Context) {
-	idStr :=c.Param("id")
+	idStr := c.Param("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid id"})
@@ -72,7 +72,7 @@ func GetOnePosePerformance(c *gin.Context) {
 	c.JSON(http.StatusOK, posePerformance)
 }
 
-func UpdatePosePerformance(c* gin.Context) {
+func UpdatePosePerformance(c *gin.Context) {
 	var updatePosePerformance models.PosePerformance
 	err := c.ShouldBindJSON(&updatePosePerformance)
 	if err != nil {

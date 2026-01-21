@@ -13,7 +13,7 @@ import (
 
 func GetAllWorkoutSession(c* gin.Context){
 	var workoutSessions []models.WorkoutSession
-	rows, err := database.Db.Query("SELECT id,")
+	rows, err := database.Db.Query("SELECT id, user_id, yoga_flow_id, started_at, completed_at, duration, rating, feedback, created_at FROM workout_session")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 	return
@@ -31,6 +31,7 @@ func GetAllWorkoutSession(c* gin.Context){
 			&workoutSession.Duration,
 			&workoutSession.Rating,
 			&workoutSession.Feedback,
+			&workoutSession.CreatedAt,
 		)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

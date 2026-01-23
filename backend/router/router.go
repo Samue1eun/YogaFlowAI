@@ -6,15 +6,21 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"yogaflow.ai/handlers"
+	"yogaflow.ai/middleware"
 )
 
 func PageRouter() {
 	r := gin.Default()
 	v1 := r.Group("/v1")
 	{
+		// AUTH ROUTES (public)
+		v1.POST("/auth/register", handlers.Register)
+		v1.POST("/auth/login", handlers.Login)
+
 		// user ROUTES (all endpoints satisfied)
 		v1.GET("/users", handlers.GetAllUsers)
-		v1.GET("/users/adminaccess", handlers.GetAllUsersAdmin)
+		v1.GET("/users/adminaccess", middleware.AuthMiddleware(), middleware.AdminMiddleware(), handlers.GetAllUsersAdmin)
+		v1.GET("/auth/me", middleware.AuthMiddleware(), handlers.GetMe)
 		// v1.GET("/users/:id", handlers.GetOneUser)
 		v1.DELETE("/users/:id", handlers.DeleteUser)
 		v1.PUT("/users/:id", handlers.UpdateUser)
@@ -72,9 +78,8 @@ func PageRouter() {
 		v1.POST("/user_favorites/", handlers.CreateUserFavorite)
 		v1.DELETE("/user_favorites/:id", handlers.DeleteUserFavorite)
 
-		// user_flows ROUTES
+		// user_flows ROUTES (all endpoints satisfied)
 		// User flows do not need an update feature since a user will have a new flow created each time
-		// NEED TO TEST
 		v1.GET("/user_flows", handlers.GetAllUserFlows)
 		v1.GET("/user_flows/:id", handlers.GetOneUserFlow)
 		v1.POST("/user_flows", handlers.CreateUserFlow)

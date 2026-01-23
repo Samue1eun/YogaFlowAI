@@ -1,0 +1,73 @@
+package middleware
+package middleware
+
+import (
+	"net/http"
+	"os"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}	}		c.Next()		}			return			c.Abort()			c.JSON(http.StatusForbidden, gin.H{"error": "Admin access required"})		if !exists || role != "admin" {		role, exists := c.Get("role")	return func(c *gin.Context) {func AdminMiddleware() gin.HandlerFunc {// AdminMiddleware checks if the user has admin role}	}		c.Next()		c.Set("role", claims.Role)		c.Set("email", claims.Email)		c.Set("username", claims.Username)		c.Set("user_id", claims.UserID)		// Set user info in context for use in handlers		}			return			c.Abort()			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid or expired token"})		if err != nil || !token.Valid {		})			return []byte(os.Getenv("JWT_SECRET")), nil		token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {		claims := &Claims{}		tokenString := parts[1]		}			return			c.Abort()			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid authorization header format"})		if len(parts) != 2 || parts[0] != "Bearer" {		parts := strings.Split(authHeader, " ")		// Expected format: "Bearer <token>"		}			return			c.Abort()			c.JSON(http.StatusUnauthorized, gin.H{"error": "Authorization header required"})		if authHeader == "" {		authHeader := c.GetHeader("Authorization")	return func(c *gin.Context) {func AuthMiddleware() gin.HandlerFunc {}	jwt.RegisteredClaims	Role     string `json:"role"`	Email    string `json:"email"`	Username string `json:"username"`	UserID   int    `json:"user_id"`type Claims struct {)	"github.com/golang-jwt/jwt/v5"	"github.com/gin-gonic/gin"	"strings"

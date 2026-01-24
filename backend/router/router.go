@@ -84,6 +84,11 @@ func PageRouter() {
 		v1.GET("/user_flows/:id", handlers.GetOneUserFlow)
 		v1.POST("/user_flows", handlers.CreateUserFlow)
 		v1.DELETE("/user_flows/:id", handlers.DeleteUserFlow)
+
+		// AI FLOW GENERATION ROUTES
+		// Generate personalized yoga flows using Claude AI
+		v1.POST("/ai/generate-flow", handlers.GenerateAIFlow)
+		v1.GET("/ai/quick-flow", handlers.QuickGenerateAIFlow)
 	}
 
 	r.Run(":8081")

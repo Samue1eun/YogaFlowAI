@@ -11,6 +11,7 @@ package main
 // 	initializers.ConnectDB()
 // }
 
-// func main() {
-// 	initializers.DB.AutoMigrate(&models.User{})
-// }
+func main() {
+	// Placeholder for future migrations
+	// initializers.DB.AutoMigrate(&models.User{})
+}

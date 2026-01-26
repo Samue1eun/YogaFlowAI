@@ -77,7 +77,7 @@ func GenerateAIFlow(req AIFlowRequest) (*AIFlowResponse, error) {
 		Messages: []anthropic.Message{
 			anthropic.NewUserTextMessage(prompt),
 		},
-		MaxTokens: 4000,
+		MaxTokens: 3999,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("claude API error: %w", err)

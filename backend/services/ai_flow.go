@@ -11,6 +11,8 @@ import (
 	"yogaflow.ai/models"
 )
 
+// PUT THESE STRUCTS INTO THEIR OWN MODELS (ALL UNDER ONE FILE)
+
 // AIFlowRequest represents the request to generate a yoga flow
 type AIFlowRequest struct {
 	UserID      int    `json:"user_id"`

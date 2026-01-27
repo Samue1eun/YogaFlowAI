@@ -159,6 +159,7 @@ Return ONLY valid JSON (no markdown, no explanation) in this exact format:
 
 GUIDELINES:
 1. Include 10-20 poses depending on duration
+2. Make sure that if a pose requires another side, to make sure the flow is repeated for the other side.
 2. Start with gentle warm-up poses
 3. Build intensity gradually
 4. Include both sides for asymmetric poses (specify "left" then "right")

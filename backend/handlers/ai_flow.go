@@ -5,12 +5,13 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"yogaflow.ai/models"
 	"yogaflow.ai/services"
 )
 
 // GenerateAIFlow handles the AI yoga flow generation endpoint
 func GenerateAIFlow(c *gin.Context) {
-	var req services.AIFlowRequest
+	var req models.AIFlowRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -57,7 +58,7 @@ func QuickGenerateAIFlow(c *gin.Context) {
 		fmt.Sscanf(duration, "%d", &durationInt)
 	}
 
-	req := services.AIFlowRequest{
+	req := models.AIFlowRequest{
 		Duration:   durationInt,
 		FlowType:   flowType,
 		Difficulty: difficulty,

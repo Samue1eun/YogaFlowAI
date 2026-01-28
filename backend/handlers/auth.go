@@ -190,6 +190,7 @@ func generateToken(user models.User) (string, error) {
 		Username: user.Username,
 		Email:    user.Email,
 		Role:     user.Role,
+		Tier:     user.Tier,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),

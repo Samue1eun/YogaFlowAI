@@ -87,8 +87,10 @@ func PageRouter() {
 
 		// AI FLOW GENERATION ROUTES
 		// Generate personalized yoga flows using Claude AI
-		v1.POST("/ai/generate-flow", handlers.GenerateAIFlow)
-		v1.GET("/ai/quick-flow", handlers.QuickGenerateAIFlow)
+		// Premium users only
+		v1.POST("/ai/generate-flow", middleware.AuthMiddleware(), middleware.PremiumMiddleware(), handlers.GenerateAIFlow)
+		// Free tier users
+		v1.GET("/ai/quick-flow", middleware.AuthMiddleware(), handlers.QuickGenerateAIFlow)
 	}
 
 	r.Run(":8081")

@@ -41,7 +41,7 @@ func GenerateAIFlow(req models.AIFlowRequest) (*models.AIFlowResponse, error) {
 
 	// Call Claude API
 	resp, err := client.CreateMessages(context.Background(), anthropic.MessagesRequest{
-		Model: anthropic.ModelClaude3Dot5SonnetLatest,
+		Model: "claude-sonnet-4-20250514",
 		Messages: []anthropic.Message{
 			anthropic.NewUserTextMessage(prompt),
 		},

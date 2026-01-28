@@ -14,6 +14,7 @@ type Claims struct {
 	Username string `json:"username"`
 	Email    string `json:"email"`
 	Role     string `json:"role"`
+	Tier     string `json:"tier"`
 	jwt.RegisteredClaims
 }
 
@@ -52,6 +53,7 @@ func AuthMiddleware() gin.HandlerFunc {
 		c.Set("username", claims.Username)
 		c.Set("email", claims.Email)
 		c.Set("role", claims.Role)
+		c.Set("tier", claims.Tier)
 
 		c.Next()
 	}
@@ -63,6 +65,19 @@ func AdminMiddleware() gin.HandlerFunc {
 		role, exists := c.Get("role")
 		if !exists || role != "admin" {
 			c.JSON(http.StatusForbidden, gin.H{"error": "Admin access required"})
+			c.Abort()
+			return
+		}
+		c.Next()
+	}
+}
+
+// PremiumMiddleware checks if the user has premium tier
+func PremiumMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		tier, exists := c.Get("tier")
+		if !exists || tier != "premium" {
+			c.JSON(http.StatusForbidden, gin.H{"error": "Premium subscription required"})
 			c.Abort()
 			return
 		}

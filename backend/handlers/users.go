@@ -36,7 +36,7 @@ func GetAllUsers(c *gin.Context) {
 			&user.AvatarURL, 
 			&user.Role, 
 			&user.UserType, 
-			&user.Tier, 
+			&user.Tier,
 			&user.IsActive,
 		)
 		if err != nil {

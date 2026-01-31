@@ -87,6 +87,12 @@ func UpdatePosePerformance(c *gin.Context) {
 	c.JSON(http.StatusCreated, posePerformance)
 }
 
+
+// Update every time a flow calls the pose
+func UpdateUserPosePerformance(C *gin.Context) {
+
+}
+
 func CreatePosePerformance(c *gin.Context) {
 	var newPosePerformance models.PosePerformance
 	err := c.ShouldBindJSON(&newPosePerformance)

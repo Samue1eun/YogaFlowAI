@@ -34,14 +34,15 @@ type AuthResponse struct {
 // Register creates a new user account
 func Register(c *gin.Context) {
 	var req RegisterRequest
-	if err := c.ShouldBindJSON(&req); err != nil {
+	err := c.ShouldBindJSON(&req)
+	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	// Check if user already exists
 	var existingUser models.User
-	err := database.Db.QueryRow("SELECT id FROM users WHERE email = $1", req.Email).Scan(&existingUser.ID)
+	err = database.Db.QueryRow("SELECT id FROM users WHERE email = $1", req.Email).Scan(&existingUser.ID)
 	if err == nil {
 		c.JSON(http.StatusConflict, gin.H{"error": "User with this email already exists"})
 		return

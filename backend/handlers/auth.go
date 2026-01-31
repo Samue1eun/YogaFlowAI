@@ -9,7 +9,6 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"
 	"yogaflow.ai/database"
-	"yogaflow.ai/middleware"
 	"yogaflow.ai/models"
 	"yogaflow.ai/services"
 )
@@ -185,7 +184,7 @@ func GetMe(c *gin.Context) {
 }
 
 func generateToken(user models.User) (string, error) {
-	claims := middleware.Claims{
+	claims := models.Claims{
 		UserID:   user.ID,
 		Username: user.Username,
 		Email:    user.Email,

@@ -88,9 +88,18 @@ func UpdatePosePerformance(c *gin.Context) {
 }
 
 
-// Update every time a flow calls the pose
+// Update every time a flow calls the pose (NOT COMPLETE)
 func UpdateUserPosePerformance(C *gin.Context) {
+	performance, err := services.GetPosePerformanceByUserAndPose(userID, poseID)
+	if err != nil {
 
+	}
+	performance.Attempts += 1
+
+	updated, err := services.UpdatePosePerformance(performance)
+	if err != nil {
+
+	}
 }
 
 func CreatePosePerformance(c *gin.Context) {

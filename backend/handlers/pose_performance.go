@@ -101,6 +101,12 @@ func UpdateUserPosePerformance(c *gin.Context) {
 		return
 	}
 
+	var req UpdatePoseAttemptRequest
+	err := c.ShouldBindJSON(&req)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
 	
 	idStr := c.Param("id")
 	id, err := strconv.Atoi(idStr)

@@ -90,6 +90,19 @@ func UpdatePosePerformance(c *gin.Context) {
 
 // Update every time a flow calls the pose (NOT COMPLETE)
 func UpdateUserPosePerformance(c *gin.Context) {
+	idStr := c.Param("id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid id"})
+		return
+	}
+
+	var updateUserPosePerformance models.PosePerformance
+	err = database.Db.QueryRow(
+		"SELECT id, user_id, pose_id, attempts, success_rate"
+	).Scan(
+		&
+	)
 	performance, err := services.GetPosePerformanceByUserAndPose(userID, poseID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

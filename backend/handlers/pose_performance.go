@@ -11,6 +11,11 @@ import (
 	"yogaflow.ai/services"
 )
 
+type UpdatePoseAttemptRequest struct {
+	PoseID int `json:"pose_id" binding:"required"`
+	WasSuccessful bool `json:"was_successful"`
+}
+
 func GetAllPosePerformances(c *gin.Context) {
 	var posePerformances []models.PosePerformance
 	rows, err := database.Db.Query("SELECT id, user_id, pose_id, attempts, success_rate, difficulty_rating, last_attempted FROM pose_performance")
@@ -90,6 +95,13 @@ func UpdatePosePerformance(c *gin.Context) {
 
 // Update every time a flow calls the pose (NOT COMPLETE)
 func UpdateUserPosePerformance(c *gin.Context) {
+	userID, exists := c.Get("user_id")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "User not authenticated"})
+		return
+	}
+
+	
 	idStr := c.Param("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil {
@@ -112,19 +124,19 @@ func UpdateUserPosePerformance(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Pose performance not found"})
 		return
 	}
-	performance, err := services.GetPosePerformanceByUserAndPose(userID, poseID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-	performance.Attempts += 1
+	// performance, err := services.GetPosePerformanceByUserAndPose(userID, poseID)
+	// if err != nil {
+	// 	c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	// 	return
+	// }
+	// performance.Attempts += 1
 
-	updatedPerformance, err := services.UpdatePosePerformance(performance)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-	c.JSON(http.StatusCreated, updatedPerformance)
+	// updatedPerformance, err := services.UpdatePosePerformance(performance)
+	// if err != nil {
+	// 	c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	// 	return
+	// }
+	// c.JSON(http.StatusCreated, updatedPerformance)
 }
 
 func CreatePosePerformance(c *gin.Context) {

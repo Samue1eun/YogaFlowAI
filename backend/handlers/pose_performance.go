@@ -99,10 +99,19 @@ func UpdateUserPosePerformance(c *gin.Context) {
 
 	var updateUserPosePerformance models.PosePerformance
 	err = database.Db.QueryRow(
-		"SELECT id, user_id, pose_id, attempts, success_rate"
+		"SELECT id, user_id, pose_id, attempts, success_rate FROM pose_perforance WHERE id=$1",
+		id,
 	).Scan(
-		&
+		&updateUserPosePerformance.ID,
+		&updateUserPosePerformance.UserID,
+		&updateUserPosePerformance.PoseID,
+		&updateUserPosePerformance.Attempts,
+		&updateUserPosePerformance.SuccessRate,
 	)
+	if err == sql.ErrNoRows {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Pose performance not found"})
+		return
+	}
 	performance, err := services.GetPosePerformanceByUserAndPose(userID, poseID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

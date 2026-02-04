@@ -107,42 +107,48 @@ func UpdateUserPosePerformance(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	
-	idStr := c.Param("id")
-	id, err := strconv.Atoi(idStr)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid id"})
-		return
-	}
 
-	var updateUserPosePerformance models.PosePerformance
+	var posePerformance models.PosePerformance
 	err = database.Db.QueryRow(
-		"SELECT id, user_id, pose_id, attempts, success_rate FROM pose_perforance WHERE id=$1",
-		id,
+		"SELECT id, user_id, pose_id, attempts, success_rate, difficulty_rating, last attempted FROM pose_performance WHERE user_id=$1 AND pose_id=$2".
+		userID, req.PoseID,
 	).Scan(
-		&updateUserPosePerformance.ID,
-		&updateUserPosePerformance.UserID,
-		&updateUserPosePerformance.PoseID,
-		&updateUserPosePerformance.Attempts,
-		&updateUserPosePerformance.SuccessRate,
+		&posePerformance.ID,
+		&posePerformance.UserID,
+		&posePerformance.PoseID,
+		&posePerformance.Attempts,
+		&posePerformance.SuccessRate,
+		&posePerformance.DifficultyRating,
+		&posePerformance.LastAttempted,
 	)
+	
 	if err == sql.ErrNoRows {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Pose performance not found"})
+		successRate := 0.0
+		if req.WasSuccessful {
+			successRate = 100.0
+		}
+		
+		newPosePerformance := models.PosePerformance{
+			UserID: userID.(int),
+			PoseID: req.PoseID,
+			Attempts: 1,
+			SuccessRate: successRate,
+		}
+
+		created, err := services.CreatePosePerformance(newPosePerformance)
+			if err != nil {
+				c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+				return
+			}
+			c.JSON(http.StatusCreated, created)
+			return
+	}
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	// performance, err := services.GetPosePerformanceByUserAndPose(userID, poseID)
-	// if err != nil {
-	// 	c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-	// 	return
-	// }
-	// performance.Attempts += 1
 
-	// updatedPerformance, err := services.UpdatePosePerformance(performance)
-	// if err != nil {
-	// 	c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-	// 	return
-	// }
-	// c.JSON(http.StatusCreated, updatedPerformance)
 }
 
 func CreatePosePerformance(c *gin.Context) {

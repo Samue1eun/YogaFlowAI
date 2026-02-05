@@ -53,6 +53,8 @@ func PageRouter() {
 		v1.GET("/pose_performance", handlers.GetAllPosePerformances)
 		v1.GET("/pose_performance/:id", handlers.GetOnePosePerformance)
 		v1.PUT("/pose_performance/:id", handlers.UpdatePosePerformance)
+		// This pose_performance is what updates the users poses after they complete a flow session
+		v1.PUT("/pose_performance/attempt", middleware.AuthMiddleware(), handlers.UpdateUserPosePerformance)
 		v1.POST("/pose_performance", handlers.CreatePosePerformance)
 		v1.DELETE("/pose_performance/:id", handlers.DeletePosePerformance)
 

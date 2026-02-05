@@ -12,7 +12,7 @@ import (
 )
 
 type UpdatePoseAttemptRequest struct {
-	PoseID int `json:"pose_id" binding:"required"`
+	PoseID        int  `json:"pose_id" binding:"required"`
 	WasSuccessful bool `json:"was_successful"`
 }
 
@@ -92,7 +92,6 @@ func UpdatePosePerformance(c *gin.Context) {
 	c.JSON(http.StatusCreated, posePerformance)
 }
 
-
 // Update every time a flow calls the pose (NOT COMPLETE)
 func UpdateUserPosePerformance(c *gin.Context) {
 	userID, exists := c.Get("user_id")
@@ -110,7 +109,7 @@ func UpdateUserPosePerformance(c *gin.Context) {
 
 	var posePerformance models.PosePerformance
 	err = database.Db.QueryRow(
-		"SELECT id, user_id, pose_id, attempts, success_rate, difficulty_rating, last attempted FROM pose_performance WHERE user_id=$1 AND pose_id=$2".
+		"SELECT id, user_id, pose_id, attempts, success_rate, difficulty_rating, last_attempted FROM pose_performance WHERE user_id=$1 AND pose_id=$2",
 		userID, req.PoseID,
 	).Scan(
 		&posePerformance.ID,
@@ -121,27 +120,27 @@ func UpdateUserPosePerformance(c *gin.Context) {
 		&posePerformance.DifficultyRating,
 		&posePerformance.LastAttempted,
 	)
-	
+
 	if err == sql.ErrNoRows {
 		successRate := 0.0
 		if req.WasSuccessful {
 			successRate = 100.0
 		}
-		
+
 		newPosePerformance := models.PosePerformance{
-			UserID: userID.(int),
-			PoseID: req.PoseID,
-			Attempts: 1,
+			UserID:      userID.(int),
+			PoseID:      req.PoseID,
+			Attempts:    1,
 			SuccessRate: successRate,
 		}
 
 		created, err := services.CreatePosePerformance(newPosePerformance)
-			if err != nil {
-				c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-				return
-			}
-			c.JSON(http.StatusCreated, created)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
+		}
+		c.JSON(http.StatusCreated, created)
+		return
 	}
 
 	if err != nil {
@@ -149,6 +148,26 @@ func UpdateUserPosePerformance(c *gin.Context) {
 		return
 	}
 
+	oldSuccessCount := (posePerformance.SuccessRate / 100) * float64(posePerformance.Attempts)
+	newAttempts := posePerformance.Attempts + 1
+
+	newSuccessCount := oldSuccessCount
+	if req.WasSuccessful {
+		newSuccessCount += 1
+	}
+
+	newSuccessRate := (newSuccessCount / float64(newAttempts)) * 100
+
+	posePerformance.Attempts = newAttempts
+	posePerformance.SuccessRate = newSuccessRate
+
+	updated, err := services.UpdatePosePerformance(posePerformance)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, updated)
 }
 
 func CreatePosePerformance(c *gin.Context) {

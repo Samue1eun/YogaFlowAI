@@ -10,19 +10,16 @@ import (
 
 
 func CreatePosePerformance(newPosePerformance models.PosePerformance) (models.PosePerformance, error) {
-	
-	query := `INSERT INTO pose_performance(id, user_id, pose_id, attempts, success_rate, difficulty_rating, last_attempted)
-			VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`
+	query := `INSERT INTO pose_performance(user_id, pose_id, attempts, success_rate, difficulty_rating, last_attempted)
+			VALUES ($1, $2, $3, $4, $5, NOW()) RETURNING id, last_attempted`
 	err := database.Db.QueryRow(
 		query,
-		newPosePerformance.ID,
 		newPosePerformance.UserID,
 		newPosePerformance.PoseID,
 		newPosePerformance.Attempts,
 		newPosePerformance.SuccessRate,
 		newPosePerformance.DifficultyRating,
-		newPosePerformance.LastAttempted,
-	).Scan(&newPosePerformance.ID)
+	).Scan(&newPosePerformance.ID, &newPosePerformance.LastAttempted)
 	return newPosePerformance, err
 }
 

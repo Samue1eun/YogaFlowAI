@@ -4,6 +4,8 @@ I figured out how the pose attempts work, which is crucial to show how many time
 
 To do list:
 - Create a route to log a workout session (similar to pose_performance)
+    - Logging is created once the workout session is complete.
+- For the yoga_pose model I will need to add in a left or right depending on the asana
 - Have to AI base a yoga flow from Claude
     1. Need it to utilize the currently library of yoga flows
     2. Need there to be a 10 minute warm up

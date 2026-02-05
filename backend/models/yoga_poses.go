@@ -1,5 +1,6 @@
 package models
 
+// Add in side and as a string
 type YogaPoses struct {
 	ID string `json:"id"`
 	Name string `json:"name"`
@@ -10,5 +11,3 @@ type YogaPoses struct {
 	Difficulty int `json:"difficulty"`
 	Level int `json:"level"`
 }
-
-// Update PSQL (Table Created January 2nd, 2026)

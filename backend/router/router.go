@@ -61,7 +61,8 @@ func PageRouter() {
 		// workout_session ROUTES (all endpoints satisfied)
 		// Note: workout sessions will be created and updated once the user completes a workout session
 		v1.GET("/workout_session", handlers.GetAllWorkoutSession)
-		// GET ONE WORKOUT SESSION
+		// GET ONE WORKOUT SESSION (Need to create)
+		// v1.GET("/workout_session/:id", handlers.GetOneWorkoutSession)
 		// UPDATE WORKOUT SESSION
 		v1.POST("/workout_session", handlers.CreateWorkoutSession)
 		v1.DELETE("/workout_session/:id", handlers.DeleteWorkoutSession)

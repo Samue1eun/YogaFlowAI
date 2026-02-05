@@ -133,6 +133,11 @@ GUIDELINES:
 7. Respect any injuries mentioned - provide safe alternatives
 8. Match the difficulty level appropriately to the user's level
 9. Duration in pose_sequence is in SECONDS
+10. Once the session is complete, provide JSON data based of the following model
+	RESPONSE FORMAT:
+	Return ONLY valid JSON (no markdown, no explanation) in this exact format:
+	{
+	}
 
 Generate the yoga flow now:`
 

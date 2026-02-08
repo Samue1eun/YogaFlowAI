@@ -22,3 +22,5 @@ Claude AI improvements:
 
 Go Lang code improvements
 - For the yoga_pose model, I will need to add in a left or right depending on the asana
+
+Need to start working on the frontend.
